@@ -1,6 +1,6 @@
 TP DIGITAL III:
 
-ADC:
+ADC:asdfg
 	Controlado por Timer
 	Si tiene pin que se pone en 1 al sentir peso, el timer se inicia por dicho pin, gpio: flanco subida cuenta, flanco bajada no
 	Muestrea cada 250 ms
