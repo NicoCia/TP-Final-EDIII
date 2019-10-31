@@ -6,6 +6,9 @@
 #include "lpc17xx_exti.h"
 #include "lpc17xx_gpio.h"
 
+#define SALIDA (uint8_t) 1
+#define ENTRADA (uint8_t) 0
+
 void confEINT(void);
 void confTIMER(void);
 void confADC(void);
@@ -17,18 +20,13 @@ void confUARTPin(void);
 void confEINTPin(uint8_t num);
 
 
-
-
-
-
-
 int main(void) {
-
+/*
 
 	while(1) {
         i++ ;
     }
-    return 0 ;
+*/   return 0 ;
 }
 
 
@@ -110,3 +108,4 @@ void confPinSoC(uint8_t puerto,uint8_t primerBit, uint8_t ultimoBit,uint8_t valo
 	return;
 
 }
+
