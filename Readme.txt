@@ -1,4 +1,4 @@
-TP DIGITAL:
+TP DIGITAL III:
 
 ADC:
 	Controlado por Timer
