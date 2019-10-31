@@ -29,8 +29,8 @@ Funciones:
 GPIO:
 	-ADC					P0.23				(1 pin)
 	-Teclado				P2.0-7				(8 pines)
-	-Displays				P0.3-10				(8 pines)	
-	-Multiplicación de displays		P0.11-20			(9 pines)
+	-Displays				P0.4-11				(8 pines)	
+	-Multiplicación de displays		P0.12-20			(9 pines)
 	-UART					P0.2-3				(2 pines)
 	
 
