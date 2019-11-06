@@ -7,7 +7,7 @@
 #include "lpc17xx_gpio.h"
 
 void confEINT(void);
-void confTIMER(void);
+void confTIM(void);
 void confADC(void);
 void confUART(void);
 void confGPIO(void);
@@ -113,6 +113,27 @@ void confPinSoC(uint8_t puerto,uint8_t primerBit, uint8_t ultimoBit,uint8_t valo
 
 }
 
-void confTimer(void){
+void confTIM(void){
+	TIM_TIMERCFG_Type TIMcfg;
+	TIMcfg.PrescaleOption = TIM_PRESCALE_USVAL;
+	TIMcfg.PrescaleValue = 1;
+	TIM_Init(LPC_TIM0,TIM_TIMER_MODE ,&TIMcfg);
 
+	TIM_MATCHCFG_Type MATCHcfg;
+	MATCHcfg.MatchChannel = 1;
+	MATCHcfg.IntOnMatch = DISABLE;
+	MATCHcfg.StopOnMatch = DISABLE;
+	MATCHcfg.ResetOnMatch = ENABLE;
+	MATCHcfg.ExtMatchOutputType = TIM_EXTMATCH_NOTHING;
+	MATCHcfg.MatchValue = 250000;
+	TIM_ConfigMatch(LPC_TIM0, &MATCHcfg);
+
+	return;
+}
+
+void confADC(void){
+	confADCPin_0a3(0);
+	ADC_Init(LPC_ADC, 200000);
+	ADC_StartCmd(LPC_ADC, ADC_START_ON_MAT01);
+	ADC_ChannelCmd(LPC_ADC, 0, ENABLE);
 }

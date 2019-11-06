@@ -29,7 +29,7 @@ all: TP_Final_0.0.1.axf
 TP_Final_0.0.1.axf: $(OBJS) $(USER_OBJS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: MCU Linker'
-	arm-none-eabi-gcc -nostdlib -L"C:\Users\nico-\Documents\LPCXpresso_8.2.2_650\workspace2\CMSISv2p00_LPC17xx\Debug" -Xlinker -Map="TP_Final_0.0.1.map" -Xlinker --gc-sections -Xlinker -print-memory-usage -mcpu=cortex-m3 -mthumb -T "TP_Final_0_0_1_Debug.ld" -o "TP_Final_0.0.1.axf" $(OBJS) $(USER_OBJS) $(LIBS)
+	arm-none-eabi-gcc -nostdlib -L"C:\Users\nicoc\Documents\Electronica Digital III\LPCXpresso\LPCXpresso_8.2.2_650\workspace2\CMSISv2p00_LPC17xx\Debug" -Xlinker -Map="TP_Final_0.0.1.map" -Xlinker --gc-sections -Xlinker -print-memory-usage -mcpu=cortex-m3 -mthumb -T "TP_Final_0_0_1_Debug.ld" -o "TP_Final_0.0.1.axf" $(OBJS) $(USER_OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 	$(MAKE) --no-print-directory post-build
