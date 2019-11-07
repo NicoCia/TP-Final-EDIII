@@ -16,7 +16,7 @@ void confADCPin(uint8_t num);
 void confUARTPin(void);
 void confEINTPin(uint8_t num);
 
-
+void ADC_IRQHanler(void);
 
 #define SALIDA (uint8_t) 1
 
@@ -136,4 +136,7 @@ void confADC(void){
 	ADC_Init(LPC_ADC, 200000);
 	ADC_StartCmd(LPC_ADC, ADC_START_ON_MAT01);
 	ADC_ChannelCmd(LPC_ADC, 0, ENABLE);
+	ADC_IntConfig (LPC_ADC, ADC_ADINTEN0, ENABLE);
+
+	return;
 }
