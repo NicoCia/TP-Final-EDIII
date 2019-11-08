@@ -9,7 +9,7 @@
 
 
 //para catodo comun-revisar
-uint8_t perder[]={0b11111100, 0b01100000, 0b11011010, 0b11110010, 0b01100110, 0b10110110, 0b10111110, 0b11100000, 0b11111110, 0b11110110};
+uint8_t prender[]={0b11111100, 0b01100000, 0b11011010, 0b11110010, 0b01100110, 0b10110110, 0b10111110, 0b11100000, 0b11111110, 0b11110110};
 uint8_t apagar[]={0b00000011, 0b10011111, 0b00100101, 0b00001101, 0b10011001, 0b01001001, 0b01000001, 0b00011111, 0b00000001, 0b00001001};
 uint8_t *nums[5]={};
 //uint16_t peso_max=5000/1024;
@@ -50,4 +50,15 @@ uint8_t **convert(uint16_t dato){
 	}
 	nums[punto][2]=SI;
 	return nums;
+}
+
+void peso(void){
+	static uint8_t i=0;
+	GPIO_ClearValue(0,(uint32_t)((apagar[nums[i][1]]+nums[i][2])<<4));
+	GPIO_SetValue(0,(uint32_t)((prender[nums[i][1]]+nums[i][2])<<4));
+
+	i++;
+	if(4<i)i=0;
+
+	return;
 }
