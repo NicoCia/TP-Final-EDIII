@@ -146,3 +146,12 @@ void confADC(void){
 
 	return;
 }
+
+/*Configuracion GPIO
+ * Param:
+ * 			NONE
+ */
+void confGPIO(void){
+	ConfPinSal(0,4,11);
+	return;
+}
