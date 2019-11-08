@@ -49,7 +49,7 @@ Discarded input sections
  .data.prender  0x00000000        0xa ./src/Multiplex.o
  .data.apagar   0x00000000        0xa ./src/Multiplex.o
  .text.convert  0x00000000      0x118 ./src/Multiplex.o
- .text.display  0x00000000       0x94 ./src/Multiplex.o
+ .text.display  0x00000000       0x98 ./src/Multiplex.o
  .text.confSYSTICK
                 0x00000000       0x24 ./src/Multiplex.o
  .bss.punto.5498

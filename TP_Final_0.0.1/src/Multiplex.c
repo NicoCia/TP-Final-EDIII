@@ -59,8 +59,8 @@ void convert(uint16_t dato, uint8_t *nums[], uint8_t i){
  * 			uint8_t  dig	Digito a mostrar
  */
 void display(uint8_t *nums[], uint32_t disp, uint8_t dig){
-	GPIO_ClearValue(0,disp);
-	GPIO_SetValue(0,~disp);
+	GPIO_ClearValue(0,(disp<<12));
+	GPIO_SetValue(0,((~disp)<<12));
 	GPIO_ClearValue(0,(uint32_t)((apagar[nums[dig][1]]+nums[dig][2])<<4));
 	GPIO_SetValue(0,(uint32_t)((prender[nums[dig][1]]+nums[dig][2])<<4));
 
