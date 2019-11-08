@@ -21,23 +21,33 @@ uint8_t *nums[5]={};
 uint8_t **convert(uint16_t dato){
 	uint8_t bandera=1;
 	uint16_t resto=dato;//*peso_max;
-	static uint8_t dig;
+	uint8_t dig=0;
+
 	uint8_t parcial;
 	uint16_t div=1000;
+	static uint8_t punto;
+	static uint8_t llam;
 
-	dig=0;
+	punto=0;
+	llam=1;
 	while(bandera){
 		parcial=resto/div;
 		resto=resto%div;
-		nums[dig][1]=parcial;
-		nums[dig][2]=NO;
 		if(parcial<10){
+			nums[dig][1]=parcial;
+			nums[dig][2]=NO;
 			div=div/10;
 			dig++;
 		}
-		else convert(parcial);
+		else {
+			llam++;
+			convert(parcial*div/10);
+			nums[punto-1][2]=NO;
+			punto++;
+			dig=llam;
+		}
 		if(div==0)bandera=0;
 	}
-	nums[1][2]=SI;
+	nums[punto][2]=SI;
 	return nums;
 }

@@ -45,9 +45,12 @@ Discarded input sections
  .data.perder   0x00000000        0xa ./src/Multiplex.o
  .data.apagar   0x00000000        0xa ./src/Multiplex.o
  .bss.nums      0x00000000       0x14 ./src/Multiplex.o
- .text.convert  0x00000000       0xbc ./src/Multiplex.o
- .bss.dig.5557  0x00000000        0x1 ./src/Multiplex.o
- .debug_info    0x00000000      0x1a2 ./src/Multiplex.o
+ .text.convert  0x00000000      0x108 ./src/Multiplex.o
+ .bss.punto.5560
+                0x00000000        0x1 ./src/Multiplex.o
+ .bss.llam.5561
+                0x00000000        0x1 ./src/Multiplex.o
+ .debug_info    0x00000000      0x1c1 ./src/Multiplex.o
  .debug_abbrev  0x00000000       0xdf ./src/Multiplex.o
  .debug_aranges
                 0x00000000       0x20 ./src/Multiplex.o
@@ -69,8 +72,8 @@ Discarded input sections
  .debug_macro   0x00000000      0x33a ./src/Multiplex.o
  .debug_macro   0x00000000       0x22 ./src/Multiplex.o
  .debug_macro   0x00000000       0x46 ./src/Multiplex.o
- .debug_line    0x00000000      0x2f6 ./src/Multiplex.o
- .debug_str     0x00000000     0xacd8 ./src/Multiplex.o
+ .debug_line    0x00000000      0x2fc ./src/Multiplex.o
+ .debug_str     0x00000000     0xace3 ./src/Multiplex.o
  .comment       0x00000000       0x6f ./src/Multiplex.o
  .debug_frame   0x00000000       0x34 ./src/Multiplex.o
  .ARM.attributes
