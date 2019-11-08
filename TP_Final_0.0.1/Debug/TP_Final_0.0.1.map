@@ -24,18 +24,57 @@ c:/nxp/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/
 Discarded input sections
 
  .group         0x00000000        0x8 ./src/Multiplex.o
+ .group         0x00000000        0x8 ./src/Multiplex.o
+ .group         0x00000000        0x8 ./src/Multiplex.o
+ .group         0x00000000        0x8 ./src/Multiplex.o
+ .group         0x00000000        0x8 ./src/Multiplex.o
+ .group         0x00000000        0x8 ./src/Multiplex.o
+ .group         0x00000000        0x8 ./src/Multiplex.o
+ .group         0x00000000        0x8 ./src/Multiplex.o
+ .group         0x00000000        0x8 ./src/Multiplex.o
+ .group         0x00000000        0x8 ./src/Multiplex.o
+ .group         0x00000000        0x8 ./src/Multiplex.o
+ .group         0x00000000        0x8 ./src/Multiplex.o
+ .group         0x00000000        0x8 ./src/Multiplex.o
+ .group         0x00000000        0x8 ./src/Multiplex.o
+ .group         0x00000000        0x8 ./src/Multiplex.o
+ .group         0x00000000        0x8 ./src/Multiplex.o
  .text          0x00000000        0x0 ./src/Multiplex.o
  .data          0x00000000        0x0 ./src/Multiplex.o
  .bss           0x00000000        0x0 ./src/Multiplex.o
- .debug_info    0x00000000       0x21 ./src/Multiplex.o
- .debug_abbrev  0x00000000       0x13 ./src/Multiplex.o
+ .data.perder   0x00000000        0xa ./src/Multiplex.o
+ .data.apagar   0x00000000        0xa ./src/Multiplex.o
+ .bss.nums      0x00000000       0x14 ./src/Multiplex.o
+ .data.peso_max
+                0x00000000        0x2 ./src/Multiplex.o
+ .text.convert  0x00000000       0xc0 ./src/Multiplex.o
+ .bss.dig.5558  0x00000000        0x1 ./src/Multiplex.o
+ .debug_info    0x00000000      0x1b3 ./src/Multiplex.o
+ .debug_abbrev  0x00000000       0xdf ./src/Multiplex.o
  .debug_aranges
-                0x00000000       0x18 ./src/Multiplex.o
- .debug_macro   0x00000000       0x11 ./src/Multiplex.o
+                0x00000000       0x20 ./src/Multiplex.o
+ .debug_ranges  0x00000000       0x10 ./src/Multiplex.o
+ .debug_macro   0x00000000       0xc8 ./src/Multiplex.o
  .debug_macro   0x00000000      0x88c ./src/Multiplex.o
- .debug_line    0x00000000       0x33 ./src/Multiplex.o
- .debug_str     0x00000000     0x24e1 ./src/Multiplex.o
+ .debug_macro   0x00000000       0x1c ./src/Multiplex.o
+ .debug_macro   0x00000000       0x2e ./src/Multiplex.o
+ .debug_macro   0x00000000       0x10 ./src/Multiplex.o
+ .debug_macro   0x00000000      0x12d ./src/Multiplex.o
+ .debug_macro   0x00000000      0x5b2 ./src/Multiplex.o
+ .debug_macro   0x00000000       0x18 ./src/Multiplex.o
+ .debug_macro   0x00000000      0x7af ./src/Multiplex.o
+ .debug_macro   0x00000000      0x2c7 ./src/Multiplex.o
+ .debug_macro   0x00000000       0x63 ./src/Multiplex.o
+ .debug_macro   0x00000000      0x13f ./src/Multiplex.o
+ .debug_macro   0x00000000       0xeb ./src/Multiplex.o
+ .debug_macro   0x00000000       0xea ./src/Multiplex.o
+ .debug_macro   0x00000000      0x33a ./src/Multiplex.o
+ .debug_macro   0x00000000       0x22 ./src/Multiplex.o
+ .debug_macro   0x00000000       0x46 ./src/Multiplex.o
+ .debug_line    0x00000000      0x2f5 ./src/Multiplex.o
+ .debug_str     0x00000000     0xace1 ./src/Multiplex.o
  .comment       0x00000000       0x6f ./src/Multiplex.o
+ .debug_frame   0x00000000       0x34 ./src/Multiplex.o
  .ARM.attributes
                 0x00000000       0x33 ./src/Multiplex.o
  .group         0x00000000        0x8 ./src/TP_Final_0.0.1.o
@@ -66,8 +105,23 @@ Discarded input sections
  .text.confPinSoC
                 0x00000000       0x8c ./src/TP_Final_0.0.1.o
  .text.confTIM  0x00000000       0x50 ./src/TP_Final_0.0.1.o
- .text.confADC  0x00000000       0x30 ./src/TP_Final_0.0.1.o
+ .text.confADC  0x00000000       0x3c ./src/TP_Final_0.0.1.o
  .debug_macro   0x00000000      0x88c ./src/TP_Final_0.0.1.o
+ .debug_macro   0x00000000       0x1c ./src/TP_Final_0.0.1.o
+ .debug_macro   0x00000000       0x2e ./src/TP_Final_0.0.1.o
+ .debug_macro   0x00000000       0x10 ./src/TP_Final_0.0.1.o
+ .debug_macro   0x00000000      0x12d ./src/TP_Final_0.0.1.o
+ .debug_macro   0x00000000      0x5b2 ./src/TP_Final_0.0.1.o
+ .debug_macro   0x00000000       0x18 ./src/TP_Final_0.0.1.o
+ .debug_macro   0x00000000      0x7af ./src/TP_Final_0.0.1.o
+ .debug_macro   0x00000000      0x2c7 ./src/TP_Final_0.0.1.o
+ .debug_macro   0x00000000       0x63 ./src/TP_Final_0.0.1.o
+ .debug_macro   0x00000000      0x13f ./src/TP_Final_0.0.1.o
+ .debug_macro   0x00000000       0xeb ./src/TP_Final_0.0.1.o
+ .debug_macro   0x00000000       0xea ./src/TP_Final_0.0.1.o
+ .debug_macro   0x00000000      0x33a ./src/TP_Final_0.0.1.o
+ .debug_macro   0x00000000       0x22 ./src/TP_Final_0.0.1.o
+ .debug_macro   0x00000000       0x46 ./src/TP_Final_0.0.1.o
  .group         0x00000000        0x8 ./src/cr_startup_lpc175x_6x.o
  .text          0x00000000        0x0 ./src/cr_startup_lpc175x_6x.o
  .data          0x00000000        0x0 ./src/cr_startup_lpc175x_6x.o
@@ -699,10 +753,10 @@ END GROUP
                 0xefff74b2                PROVIDE (__valid_user_code_checksum, (0x0 - ((((((_vStackTop + (ResetISR + 0x1)) + (NMI_Handler + 0x1)) + (HardFault_Handler + 0x1)) + (DEFINED (MemManage_Handler)?MemManage_Handler:0x0 + 0x1)) + (DEFINED (BusFault_Handler)?BusFault_Handler:0x0 + 0x1)) + (DEFINED (UsageFault_Handler)?UsageFault_Handler:0x0 + 0x1))))
 OUTPUT(TP_Final_0.0.1.axf elf32-littlearm)
 
-.debug_info     0x00000000      0xb64
- .debug_info    0x00000000      0x5f9 ./src/TP_Final_0.0.1.o
- .debug_info    0x000005f9      0x253 ./src/cr_startup_lpc175x_6x.o
- .debug_info    0x0000084c      0x318 C:\Users\nicoc\Documents\Electronica Digital III\LPCXpresso\LPCXpresso_8.2.2_650\workspace2\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(system_LPC17xx.o)
+.debug_info     0x00000000      0xba7
+ .debug_info    0x00000000      0x63c ./src/TP_Final_0.0.1.o
+ .debug_info    0x0000063c      0x253 ./src/cr_startup_lpc175x_6x.o
+ .debug_info    0x0000088f      0x318 C:\Users\nicoc\Documents\Electronica Digital III\LPCXpresso\LPCXpresso_8.2.2_650\workspace2\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(system_LPC17xx.o)
 
 .debug_abbrev   0x00000000      0x343
  .debug_abbrev  0x00000000      0x168 ./src/TP_Final_0.0.1.o
@@ -722,38 +776,23 @@ OUTPUT(TP_Final_0.0.1.axf elf32-littlearm)
  .debug_ranges  0x00000040       0x70 ./src/cr_startup_lpc175x_6x.o
  .debug_ranges  0x000000b0       0x18 C:\Users\nicoc\Documents\Electronica Digital III\LPCXpresso\LPCXpresso_8.2.2_650\workspace2\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(system_LPC17xx.o)
 
-.debug_macro    0x00000000     0x2372
+.debug_macro    0x00000000      0xa92
  .debug_macro   0x00000000       0xc4 ./src/TP_Final_0.0.1.o
- .debug_macro   0x000000c4       0x1c ./src/TP_Final_0.0.1.o
- .debug_macro   0x000000e0       0x2e ./src/TP_Final_0.0.1.o
- .debug_macro   0x0000010e       0x10 ./src/TP_Final_0.0.1.o
- .debug_macro   0x0000011e      0x12d ./src/TP_Final_0.0.1.o
- .debug_macro   0x0000024b      0x5b2 ./src/TP_Final_0.0.1.o
- .debug_macro   0x000007fd       0x18 ./src/TP_Final_0.0.1.o
- .debug_macro   0x00000815      0x7af ./src/TP_Final_0.0.1.o
- .debug_macro   0x00000fc4      0x2c7 ./src/TP_Final_0.0.1.o
- .debug_macro   0x0000128b       0x63 ./src/TP_Final_0.0.1.o
- .debug_macro   0x000012ee      0x13f ./src/TP_Final_0.0.1.o
- .debug_macro   0x0000142d       0xeb ./src/TP_Final_0.0.1.o
- .debug_macro   0x00001518       0xea ./src/TP_Final_0.0.1.o
- .debug_macro   0x00001602      0x33a ./src/TP_Final_0.0.1.o
- .debug_macro   0x0000193c       0x22 ./src/TP_Final_0.0.1.o
- .debug_macro   0x0000195e       0x46 ./src/TP_Final_0.0.1.o
- .debug_macro   0x000019a4       0x1d ./src/cr_startup_lpc175x_6x.o
- .debug_macro   0x000019c1      0x12b C:\Users\nicoc\Documents\Electronica Digital III\LPCXpresso\LPCXpresso_8.2.2_650\workspace2\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(system_LPC17xx.o)
- .debug_macro   0x00001aec      0x886 C:\Users\nicoc\Documents\Electronica Digital III\LPCXpresso\LPCXpresso_8.2.2_650\workspace2\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(system_LPC17xx.o)
+ .debug_macro   0x000000c4       0x1d ./src/cr_startup_lpc175x_6x.o
+ .debug_macro   0x000000e1      0x12b C:\Users\nicoc\Documents\Electronica Digital III\LPCXpresso\LPCXpresso_8.2.2_650\workspace2\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(system_LPC17xx.o)
+ .debug_macro   0x0000020c      0x886 C:\Users\nicoc\Documents\Electronica Digital III\LPCXpresso\LPCXpresso_8.2.2_650\workspace2\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(system_LPC17xx.o)
 
-.debug_line     0x00000000      0x663
- .debug_line    0x00000000      0x3bb ./src/TP_Final_0.0.1.o
- .debug_line    0x000003bb       0xd5 ./src/cr_startup_lpc175x_6x.o
- .debug_line    0x00000490      0x1d3 C:\Users\nicoc\Documents\Electronica Digital III\LPCXpresso\LPCXpresso_8.2.2_650\workspace2\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(system_LPC17xx.o)
+.debug_line     0x00000000      0x665
+ .debug_line    0x00000000      0x3bd ./src/TP_Final_0.0.1.o
+ .debug_line    0x000003bd       0xd5 ./src/cr_startup_lpc175x_6x.o
+ .debug_line    0x00000492      0x1d3 C:\Users\nicoc\Documents\Electronica Digital III\LPCXpresso\LPCXpresso_8.2.2_650\workspace2\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(system_LPC17xx.o)
 
-.debug_str      0x00000000     0xb6e2
- .debug_str     0x00000000     0xaf63 ./src/TP_Final_0.0.1.o
-                               0xafe9 (size before relaxing)
- .debug_str     0x0000af63      0x210 ./src/cr_startup_lpc175x_6x.o
+.debug_str      0x00000000     0xb757
+ .debug_str     0x00000000     0xafd8 ./src/TP_Final_0.0.1.o
+                               0xb05e (size before relaxing)
+ .debug_str     0x0000afd8      0x210 ./src/cr_startup_lpc175x_6x.o
                                0x26c3 (size before relaxing)
- .debug_str     0x0000b173      0x56f C:\Users\nicoc\Documents\Electronica Digital III\LPCXpresso\LPCXpresso_8.2.2_650\workspace2\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(system_LPC17xx.o)
+ .debug_str     0x0000b1e8      0x56f C:\Users\nicoc\Documents\Electronica Digital III\LPCXpresso\LPCXpresso_8.2.2_650\workspace2\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(system_LPC17xx.o)
                                0x816f (size before relaxing)
 
 .comment        0x00000000       0xdc

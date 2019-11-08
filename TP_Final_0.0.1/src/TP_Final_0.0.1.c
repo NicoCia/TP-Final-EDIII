@@ -112,7 +112,10 @@ void confPinSoC(uint8_t puerto,uint8_t primerBit, uint8_t ultimoBit,uint8_t valo
 	return;
 
 }
-
+/*Configuracion Timer0 para producir un Match cada 250 ms
+ * Param:
+ * 			NONE
+ */
 void confTIM(void){
 	TIM_TIMERCFG_Type TIMcfg;
 	TIMcfg.PrescaleOption = TIM_PRESCALE_USVAL;
@@ -130,7 +133,10 @@ void confTIM(void){
 
 	return;
 }
-
+/*Configuracion ADC para tomar muestras cada vez que se producza un Match en Timer0
+ * Param:
+ * 			NONE
+ */
 void confADC(void){
 	confADCPin_0a3(0);
 	ADC_Init(LPC_ADC, 200000);
