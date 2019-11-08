@@ -21,10 +21,11 @@ uint8_t *nums[5]={};
 uint8_t **convert(uint16_t dato){
 	uint8_t bandera=1;
 	uint16_t resto=dato;//*peso_max;
-	static uint8_t dig=0;
+	static uint8_t dig;
 	uint8_t parcial;
 	uint16_t div=1000;
 
+	dig=0;
 	while(bandera){
 		parcial=resto/div;
 		resto=resto%div;
