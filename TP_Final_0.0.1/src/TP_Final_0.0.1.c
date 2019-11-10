@@ -134,6 +134,7 @@ void confTIM(void){
 
 	return;
 }
+
 /*Configuracion ADC para tomar muestras cada vez que se producza un Match en Timer0
  * Param:
  * 			NONE
