@@ -24,18 +24,22 @@ void convert(uint16_t dato, Bloque i){
 
 	uint8_t parcial;
 	uint16_t div=10000;
-	//static uint8_t punto;
+	uint8_t punto;
 
-	//punto=0;
+	punto=0;
+
 	while(div!=0){
 		parcial=resto/div;
 		resto=resto%div;
 		nums[dig][1]=parcial;
 		nums[dig][2]=NO;
+		if(dig==2||dig==6||dig==12)punto=dig;
 		dig++;
 		div=div/10;
 	}
-	//nums[punto][2]=SI;
+
+	if(i!=TECLADO) nums[punto][2]=SI;
+
 	return;
 }
 
@@ -48,7 +52,7 @@ void convert(uint16_t dato, Bloque i){
 void display(uint8_t *nums[], uint32_t disp, uint8_t dig){
 	GPIO_ClearValue(0,(disp<<12));
 	GPIO_SetValue(0,((~disp)<<12));
-	GPIO_ClearValue(0,(uint32_t)((apagar[nums[dig][1]]+nums[dig][2])<<4));
+	GPIO_ClearValue(0,(uint32_t)((apagar[nums[dig][1]]+(~nums[dig][2]))<<4));
 	GPIO_SetValue(0,(uint32_t)((prender[nums[dig][1]]+nums[dig][2])<<4));
 
 	return;
