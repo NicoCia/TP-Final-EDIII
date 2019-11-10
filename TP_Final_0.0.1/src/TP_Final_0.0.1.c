@@ -21,9 +21,9 @@ void confEINTPin(uint8_t num);
 void SysTick_Handler(void);
 void TIMER0_IRQHandler(void);
 void ADC_IRQHanler(void);
+void UART0_IRQHandler(void);
 
 #define SALIDA (uint8_t) 1
-
 
 
 
@@ -135,6 +135,7 @@ void confTIM(void){
 	MATCHcfg.MatchValue = 50000;
 	TIM_ConfigMatch(LPC_TIM0, &MATCHcfg);
 
+	NVIC_EnableIRQ(TIMER0_IRQn);
 	return;
 }
 
@@ -158,6 +159,33 @@ void confADC(void){
 	ADC_IntConfig(LPC_ADC, ADC_ADINTEN2, ENABLE);
 	ADC_IntConfig(LPC_ADC, ADC_ADINTEN3, ENABLE);
 
+	NVIC_EnableIRQ(ADC_IRQn);
+	return;
+}
+
+/*Configuracion UART0
+ * Param:
+ * 			NONE
+ */
+void confUART(void){
+	UART_CFG_Type UARTConfigStruct;
+	UART_FIFO_CFG_Type UARTFIFOConfigStruct;
+	//configuración por defecto:
+	UART_ConfigStructInit(&UARTConfigStruct);
+	//inicializa periférico
+	UART_Init(LPC_UART0, &UARTConfigStruct);
+	UART_FIFOConfigStructInit(&UARTFIFOConfigStruct);
+	//Inicializa FIFO
+	UART_FIFOConfig(LPC_UART0, &UARTFIFOConfigStruct);
+	//Habilita transmisión
+	UART_TxCmd(LPC_UART0, ENABLE);
+	//Habilita interrucpción Tx
+
+	UART_IntConfig(LPC_UART0, UART_INTCFG_THRE, ENABLE);
+	/* preemption = 1, sub-priority = 1 */
+	//NVIC_SetPriority(UART0_IRQn, ((0x01<<3)|0x01));
+	//Habilita interrpción por UART0
+	NVIC_EnableIRQ(UART0_IRQn);
 	return;
 }
 
@@ -220,4 +248,31 @@ void ADC_IRQHanler(void){
 	convert(dato,PESO);
 
 	return;
+}
+
+/*Rutina de servicio de interrupcion de UART0
+ * Param:
+ * 			NONE
+ */
+void UART0_IRQHandler(void){
+	uint32_t intsrc, tmp;
+	//Determina la fuente de interrupción
+	intsrc = UART_GetIntId(LPC_UART0);
+	tmp = intsrc & UART_IIR_INTID_MASK;
+	// Evalúa si Transmit Holding está vacío
+	if (tmp == UART_IIR_INTID_THRE){
+		UART_IntTransmit();
+	}
+	return;
+}
+
+void UART_IntTransmit(void){
+	/*static uint8_t i=0;
+	if (i<20){
+		//Envía información por Tx
+		UART_Send(LPC_UART0, info, sizeof(info), NONE_BLOCKING);
+		i++;
+	}
+	else
+		UART_IntConfig(LPC_UART0, UART_INTCFG_THRE, ENABLE);*/
 }
