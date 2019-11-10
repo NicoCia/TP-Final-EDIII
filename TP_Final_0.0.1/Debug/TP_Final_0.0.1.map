@@ -114,13 +114,13 @@ Discarded input sections
                 0x00000000       0x14 ./src/TP_Final_0.0.1.o
  .text.ADC_IRQHanler
                 0x00000000       0xc8 ./src/TP_Final_0.0.1.o
- .bss.valADC1.5635
+ .bss.valADC1.5633
                 0x00000000        0x2 ./src/TP_Final_0.0.1.o
- .bss.valADC2.5636
+ .bss.valADC2.5634
                 0x00000000        0x2 ./src/TP_Final_0.0.1.o
- .bss.valADC3.5637
+ .bss.valADC3.5635
                 0x00000000        0x2 ./src/TP_Final_0.0.1.o
- .bss.valADC4.5638
+ .bss.valADC4.5636
                 0x00000000        0x2 ./src/TP_Final_0.0.1.o
  .debug_macro   0x00000000      0x88c ./src/TP_Final_0.0.1.o
  .debug_macro   0x00000000       0x1c ./src/TP_Final_0.0.1.o
@@ -841,21 +841,21 @@ END GROUP
                 0xefff74b2                PROVIDE (__valid_user_code_checksum, (0x0 - ((((((_vStackTop + (ResetISR + 0x1)) + (NMI_Handler + 0x1)) + (HardFault_Handler + 0x1)) + (DEFINED (MemManage_Handler)?MemManage_Handler:0x0 + 0x1)) + (DEFINED (BusFault_Handler)?BusFault_Handler:0x0 + 0x1)) + (DEFINED (UsageFault_Handler)?UsageFault_Handler:0x0 + 0x1))))
 OUTPUT(TP_Final_0.0.1.axf elf32-littlearm)
 
-.debug_info     0x00000000     0x20f2
- .debug_info    0x00000000      0x739 ./src/TP_Final_0.0.1.o
- .debug_info    0x00000739      0x253 ./src/cr_startup_lpc175x_6x.o
- .debug_info    0x0000098c      0x318 C:\Users\nicoc\Documents\Electronica Digital III\LPCXpresso\LPCXpresso_8.2.2_650\workspace2\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(system_LPC17xx.o)
- .debug_info    0x00000ca4      0x83f C:\Users\nicoc\Documents\Electronica Digital III\LPCXpresso\LPCXpresso_8.2.2_650\workspace2\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_adc.o)
- .debug_info    0x000014e3       0xc3 C:\Users\nicoc\Documents\Electronica Digital III\LPCXpresso\LPCXpresso_8.2.2_650\workspace2\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_libcfg_default.o)
- .debug_info    0x000015a6      0xb4c C:\Users\nicoc\Documents\Electronica Digital III\LPCXpresso\LPCXpresso_8.2.2_650\workspace2\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_timer.o)
+.debug_info     0x00000000     0x20e0
+ .debug_info    0x00000000      0x727 ./src/TP_Final_0.0.1.o
+ .debug_info    0x00000727      0x253 ./src/cr_startup_lpc175x_6x.o
+ .debug_info    0x0000097a      0x318 C:\Users\nicoc\Documents\Electronica Digital III\LPCXpresso\LPCXpresso_8.2.2_650\workspace2\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(system_LPC17xx.o)
+ .debug_info    0x00000c92      0x83f C:\Users\nicoc\Documents\Electronica Digital III\LPCXpresso\LPCXpresso_8.2.2_650\workspace2\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_adc.o)
+ .debug_info    0x000014d1       0xc3 C:\Users\nicoc\Documents\Electronica Digital III\LPCXpresso\LPCXpresso_8.2.2_650\workspace2\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_libcfg_default.o)
+ .debug_info    0x00001594      0xb4c C:\Users\nicoc\Documents\Electronica Digital III\LPCXpresso\LPCXpresso_8.2.2_650\workspace2\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_timer.o)
 
-.debug_abbrev   0x00000000      0x815
- .debug_abbrev  0x00000000      0x17e ./src/TP_Final_0.0.1.o
- .debug_abbrev  0x0000017e       0xf5 ./src/cr_startup_lpc175x_6x.o
- .debug_abbrev  0x00000273       0xe6 C:\Users\nicoc\Documents\Electronica Digital III\LPCXpresso\LPCXpresso_8.2.2_650\workspace2\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(system_LPC17xx.o)
- .debug_abbrev  0x00000359      0x19d C:\Users\nicoc\Documents\Electronica Digital III\LPCXpresso\LPCXpresso_8.2.2_650\workspace2\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_adc.o)
- .debug_abbrev  0x000004f6       0x6f C:\Users\nicoc\Documents\Electronica Digital III\LPCXpresso\LPCXpresso_8.2.2_650\workspace2\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_libcfg_default.o)
- .debug_abbrev  0x00000565      0x2b0 C:\Users\nicoc\Documents\Electronica Digital III\LPCXpresso\LPCXpresso_8.2.2_650\workspace2\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_timer.o)
+.debug_abbrev   0x00000000      0x7ff
+ .debug_abbrev  0x00000000      0x168 ./src/TP_Final_0.0.1.o
+ .debug_abbrev  0x00000168       0xf5 ./src/cr_startup_lpc175x_6x.o
+ .debug_abbrev  0x0000025d       0xe6 C:\Users\nicoc\Documents\Electronica Digital III\LPCXpresso\LPCXpresso_8.2.2_650\workspace2\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(system_LPC17xx.o)
+ .debug_abbrev  0x00000343      0x19d C:\Users\nicoc\Documents\Electronica Digital III\LPCXpresso\LPCXpresso_8.2.2_650\workspace2\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_adc.o)
+ .debug_abbrev  0x000004e0       0x6f C:\Users\nicoc\Documents\Electronica Digital III\LPCXpresso\LPCXpresso_8.2.2_650\workspace2\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_libcfg_default.o)
+ .debug_abbrev  0x0000054f      0x2b0 C:\Users\nicoc\Documents\Electronica Digital III\LPCXpresso\LPCXpresso_8.2.2_650\workspace2\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_timer.o)
 
 .debug_aranges  0x00000000      0x230
  .debug_aranges
@@ -904,18 +904,18 @@ OUTPUT(TP_Final_0.0.1.axf elf32-littlearm)
  .debug_line    0x00000ac5      0x1bb C:\Users\nicoc\Documents\Electronica Digital III\LPCXpresso\LPCXpresso_8.2.2_650\workspace2\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_libcfg_default.o)
  .debug_line    0x00000c80      0x4d7 C:\Users\nicoc\Documents\Electronica Digital III\LPCXpresso\LPCXpresso_8.2.2_650\workspace2\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_timer.o)
 
-.debug_str      0x00000000     0xd0af
- .debug_str     0x00000000     0xb0a4 ./src/TP_Final_0.0.1.o
-                               0xb135 (size before relaxing)
- .debug_str     0x0000b0a4      0x210 ./src/cr_startup_lpc175x_6x.o
+.debug_str      0x00000000     0xd09f
+ .debug_str     0x00000000     0xb094 ./src/TP_Final_0.0.1.o
+                               0xb125 (size before relaxing)
+ .debug_str     0x0000b094      0x210 ./src/cr_startup_lpc175x_6x.o
                                0x26c3 (size before relaxing)
- .debug_str     0x0000b2b4      0x56f C:\Users\nicoc\Documents\Electronica Digital III\LPCXpresso\LPCXpresso_8.2.2_650\workspace2\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(system_LPC17xx.o)
+ .debug_str     0x0000b2a4      0x56f C:\Users\nicoc\Documents\Electronica Digital III\LPCXpresso\LPCXpresso_8.2.2_650\workspace2\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(system_LPC17xx.o)
                                0x816f (size before relaxing)
- .debug_str     0x0000b823     0x15b9 C:\Users\nicoc\Documents\Electronica Digital III\LPCXpresso\LPCXpresso_8.2.2_650\workspace2\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_adc.o)
+ .debug_str     0x0000b813     0x15b9 C:\Users\nicoc\Documents\Electronica Digital III\LPCXpresso\LPCXpresso_8.2.2_650\workspace2\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_adc.o)
                                0x9d67 (size before relaxing)
- .debug_str     0x0000cddc       0x2d C:\Users\nicoc\Documents\Electronica Digital III\LPCXpresso\LPCXpresso_8.2.2_650\workspace2\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_libcfg_default.o)
+ .debug_str     0x0000cdcc       0x2d C:\Users\nicoc\Documents\Electronica Digital III\LPCXpresso\LPCXpresso_8.2.2_650\workspace2\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_libcfg_default.o)
                                0x3f89 (size before relaxing)
- .debug_str     0x0000ce09      0x2a6 C:\Users\nicoc\Documents\Electronica Digital III\LPCXpresso\LPCXpresso_8.2.2_650\workspace2\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_timer.o)
+ .debug_str     0x0000cdf9      0x2a6 C:\Users\nicoc\Documents\Electronica Digital III\LPCXpresso\LPCXpresso_8.2.2_650\workspace2\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_timer.o)
                                0xa38e (size before relaxing)
 
 .comment        0x00000000       0xdc
