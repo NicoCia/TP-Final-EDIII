@@ -2,6 +2,7 @@
 #include "lpc17xx_pinsel.h"
 #include "lpc17xx_adc.h"
 #include "lpc17xx_timer.h"
+#include "lpc17xx_systick.h"
 #include "lpc17xx_uart.h"
 #include "lpc17xx_exti.h"
 #include "lpc17xx_gpio.h"
@@ -17,6 +18,7 @@ void confADCPin(uint8_t num);
 void confUARTPin(void);
 void confEINTPin(uint8_t num);
 
+void SysTick_Handler(void);
 void TIMER0_IRQHandler(void);
 void ADC_IRQHanler(void);
 
@@ -165,6 +167,25 @@ void confADC(void){
  */
 void confGPIO(void){
 	confPinSal(0,4,11);
+	return;
+}
+
+/*Rutina de servicio de interrupcion de Systick
+ * Param:
+ * 			NONE
+ */
+void SysTick_Handler(void){
+	static uint8_t dig = 0;
+	static uint32_t disp=(1<<12);
+
+	display(disp, dig);
+
+	disp=(disp<<1);
+	dig++;
+
+	if(dig>14)dig=0;
+	if(disp>(1<<26)) disp=(1<<12);
+
 	return;
 }
 
