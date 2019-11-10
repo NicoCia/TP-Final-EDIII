@@ -7,7 +7,7 @@ ADC:
 
 
 Multiplexación de display
-	9-10 displays
+	9-10-15 displays
 	El tiempo se ve, SysTick.	
 	
 Teclado Matricial:
