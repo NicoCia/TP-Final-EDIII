@@ -17,6 +17,7 @@ Teclado Matricial:
 	C: Cambia modo
 	D: Final (Suma al apretar una vez y termina al apretar 2 veces).
 	*: Enter
+	#:
 
 Modos:
 	Manual
