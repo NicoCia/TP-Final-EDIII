@@ -5,6 +5,7 @@
 #include "lpc17xx_uart.h"
 #include "lpc17xx_exti.h"
 #include "lpc17xx_gpio.h"
+#include "Multiplex.h"
 
 void confEINT(void);
 void confTIM(void);
@@ -142,7 +143,7 @@ void confADC(void){
 	ADC_Init(LPC_ADC, 200000);
 	ADC_StartCmd(LPC_ADC, ADC_START_ON_MAT01);
 	ADC_ChannelCmd(LPC_ADC, 0, ENABLE);
-	ADC_IntConfig (LPC_ADC, ADC_ADINTEN0, ENABLE);
+	ADC_IntConfig(LPC_ADC, ADC_ADINTEN0, ENABLE);
 
 	return;
 }
@@ -152,6 +153,29 @@ void confADC(void){
  * 			NONE
  */
 void confGPIO(void){
-	ConfPinSal(0,4,11);
+	confPinSal(0,4,11);
+	return;
+}
+
+/*Rutina de servicio de interrupcion de ADC
+ * Param:
+ * 			NONE
+ */
+void ADC_IRQHanler(void){
+	static uint16_t valADC1=0;
+	static uint16_t valADC2=0;
+	static uint16_t valADC3=0;
+	static uint16_t valADC4=0;
+	uint16_t dato;
+
+	if(ADC_ChannelGetStatus(LPC_ADC, 0, 1)) valADC1 = ADC_ChannelGetData(LPC_ADC, 0);
+	if(ADC_ChannelGetStatus(LPC_ADC, 1, 1)) valADC1 = ADC_ChannelGetData(LPC_ADC, 1);
+	if(ADC_ChannelGetStatus(LPC_ADC, 2, 1)) valADC1 = ADC_ChannelGetData(LPC_ADC, 2);
+	if(ADC_ChannelGetStatus(LPC_ADC, 3, 1)) valADC1 = ADC_ChannelGetData(LPC_ADC, 3);
+
+	dato = valADC1+valADC2+valADC3+valADC4;
+
+	convert(dato,PESO);
+
 	return;
 }
