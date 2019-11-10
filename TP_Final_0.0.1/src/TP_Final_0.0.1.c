@@ -17,6 +17,7 @@ void confADCPin(uint8_t num);
 void confUARTPin(void);
 void confEINTPin(uint8_t num);
 
+void TIMER0_IRQHandler(void);
 void ADC_IRQHanler(void);
 
 #define SALIDA (uint8_t) 1
@@ -124,12 +125,12 @@ void confTIM(void){
 	TIM_Init(LPC_TIM0,TIM_TIMER_MODE ,&TIMcfg);
 
 	TIM_MATCHCFG_Type MATCHcfg;
-	MATCHcfg.MatchChannel = 1;
-	MATCHcfg.IntOnMatch = DISABLE;
+	MATCHcfg.MatchChannel = 0;
+	MATCHcfg.IntOnMatch = ENABLE;
 	MATCHcfg.StopOnMatch = DISABLE;
 	MATCHcfg.ResetOnMatch = ENABLE;
 	MATCHcfg.ExtMatchOutputType = TIM_EXTMATCH_NOTHING;
-	MATCHcfg.MatchValue = 250000;
+	MATCHcfg.MatchValue = 50000;
 	TIM_ConfigMatch(LPC_TIM0, &MATCHcfg);
 
 	return;
@@ -141,10 +142,19 @@ void confTIM(void){
  */
 void confADC(void){
 	confADCPin_0a3(0);
+	confADCPin_0a3(1);
+	confADCPin_0a3(2);
+	confADCPin_0a3(3);
 	ADC_Init(LPC_ADC, 200000);
-	ADC_StartCmd(LPC_ADC, ADC_START_ON_MAT01);
-	ADC_ChannelCmd(LPC_ADC, 0, ENABLE);
+	//ADC_StartCmd(LPC_ADC, ADC_START_ON_MAT01);
+	ADC_ChannexlCmd(LPC_ADC, 0, ENABLE);
+	ADC_ChannexlCmd(LPC_ADC, 1, ENABLE);
+	ADC_ChannexlCmd(LPC_ADC, 2, ENABLE);
+	ADC_ChannexlCmd(LPC_ADC, 3, ENABLE);
 	ADC_IntConfig(LPC_ADC, ADC_ADINTEN0, ENABLE);
+	ADC_IntConfig(LPC_ADC, ADC_ADINTEN1, ENABLE);
+	ADC_IntConfig(LPC_ADC, ADC_ADINTEN2, ENABLE);
+	ADC_IntConfig(LPC_ADC, ADC_ADINTEN3, ENABLE);
 
 	return;
 }
@@ -155,6 +165,12 @@ void confADC(void){
  */
 void confGPIO(void){
 	confPinSal(0,4,11);
+	return;
+}
+
+void TIMER0_IRQHandler(void){
+	ADC_StartCmd(LPC_ADC, ADC_START_NOW);
+	TIM_ClearIntPending(LPC_TIM0, TIM_MR0_INT);
 	return;
 }
 
