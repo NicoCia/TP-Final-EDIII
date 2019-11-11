@@ -14,7 +14,7 @@ void confADC(void);
 void confUART(void);
 void confGPIO(void);
 
-void confADCPin(uint8_t num);
+void confADCPin_0a3(uint8_t num);
 void confUARTPin(void);
 void confEINTPin(uint8_t num);
 
@@ -22,6 +22,8 @@ void SysTick_Handler(void);
 void TIMER0_IRQHandler(void);
 void ADC_IRQHanler(void);
 void UART0_IRQHandler(void);
+
+void UART_IntTransmit(void);
 
 #define SALIDA (uint8_t) 1
 
@@ -54,6 +56,25 @@ void confEINTPin(uint8_t num){
 
 		PINSEL_ConfigPin(&PinCfg);						//Configura el pin
 	}
+	return;
+}
+
+/*
+ * Configura el Pin de Tx y Rx
+ * Param:
+ * 			NONE
+ */
+void confUARTPin(void){
+	PINSEL_CFG_Type PinCfg;
+
+	PinCfg.Funcnum = 1;
+	PinCfg.OpenDrain = 0;
+	PinCfg.Pinmode = 0;
+	PinCfg.Pinnum = 2;
+	PinCfg.Portnum = 0;
+	PINSEL_ConfigPin(&PinCfg);
+	PinCfg.Pinnum = 3;
+	PINSEL_ConfigPin(&PinCfg);
 	return;
 }
 
@@ -184,6 +205,7 @@ void confUART(void){
 	UART_IntConfig(LPC_UART0, UART_INTCFG_THRE, ENABLE);
 	/* preemption = 1, sub-priority = 1 */
 	//NVIC_SetPriority(UART0_IRQn, ((0x01<<3)|0x01));
+	confUARTPin();
 	//Habilita interrpción por UART0
 	NVIC_EnableIRQ(UART0_IRQn);
 	return;
