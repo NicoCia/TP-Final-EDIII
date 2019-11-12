@@ -245,7 +245,7 @@ void SysTick_Handler(void){
  * 			NONE
  */
 void TIMER0_IRQHandler(void){
-	static channel = 0;
+	static uint8_t channel = 0;
 
 	ADC_ChannelCmd(LPC_ADC, 0, DISABLE);
 	ADC_ChannelCmd(LPC_ADC, 1, DISABLE);

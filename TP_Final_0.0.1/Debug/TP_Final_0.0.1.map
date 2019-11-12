@@ -717,7 +717,7 @@ END GROUP
                 0x000000e4                __data_section_table_end = .
                 0x000000e4                __bss_section_table = .
                 0x000000e4        0x4 LONG 0x1000001c ADDR (.bss)
-                0x000000e8        0x4 LONG 0x44 SIZEOF (.bss)
+                0x000000e8        0x4 LONG 0x40 SIZEOF (.bss)
                 0x000000ec        0x4 LONG 0x2007c000 ADDR (.bss_RAM2)
                 0x000000f0        0x4 LONG 0x0 SIZEOF (.bss_RAM2)
                 0x000000f4                __bss_section_table_end = .
@@ -899,18 +899,18 @@ END GROUP
                 0x2007c000                . = ALIGN ((. != 0x0)?0x4:0x1)
                 [!provide]                PROVIDE (__end_bss_RAM2, .)
 
-.bss            0x1000001c       0x44
+.bss            0x1000001c       0x40
                 0x1000001c                _bss = .
  *(.bss*)
  .bss.nums      0x1000001c       0x3c ./src/Multiplex.o
                 0x1000001c                nums
  .bss.dig.5657  0x10000058        0x1 ./src/TP_Final_0.0.1.o
- *fill*         0x10000059        0x3 
  .bss.channel.5662
-                0x1000005c        0x4 ./src/TP_Final_0.0.1.o
+                0x10000059        0x1 ./src/TP_Final_0.0.1.o
  *(COMMON)
-                0x10000060                . = ALIGN (0x4)
-                0x10000060                _ebss = .
+                0x1000005c                . = ALIGN (0x4)
+ *fill*         0x1000005a        0x2 
+                0x1000005c                _ebss = .
                 [!provide]                PROVIDE (end, .)
 
 .noinit_RAM2    0x2007c000        0x0
@@ -918,11 +918,11 @@ END GROUP
  *(.noinit.$RamAHB32*)
                 0x2007c000                . = ALIGN (0x4)
 
-.noinit         0x10000060        0x0
-                0x10000060                _noinit = .
+.noinit         0x1000005c        0x0
+                0x1000005c                _noinit = .
  *(.noinit*)
-                0x10000060                . = ALIGN (0x4)
-                0x10000060                _end_noinit = .
+                0x1000005c                . = ALIGN (0x4)
+                0x1000005c                _end_noinit = .
                 [!provide]                PROVIDE (_pvHeapStart, DEFINED (__user_heap_base)?__user_heap_base:.)
                 0x10008000                PROVIDE (_vStackTop, DEFINED (__user_stack_top)?__user_stack_top:(__top_RamLoc32 - 0x0))
                 0xefff74b2                PROVIDE (__valid_user_code_checksum, (0x0 - ((((((_vStackTop + (ResetISR + 0x1)) + (NMI_Handler + 0x1)) + (HardFault_Handler + 0x1)) + (DEFINED (MemManage_Handler)?MemManage_Handler:0x0 + 0x1)) + (DEFINED (BusFault_Handler)?BusFault_Handler:0x0 + 0x1)) + (DEFINED (UsageFault_Handler)?UsageFault_Handler:0x0 + 0x1))))
