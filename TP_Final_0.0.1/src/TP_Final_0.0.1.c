@@ -171,8 +171,8 @@ void confADC(void){
 	confADCPin_0a3(3);
 	ADC_Init(LPC_ADC, 200000);
 	//TODO revisar lo de abajo
-	//ADC_StartCmd(LPC_ADC, ADC_START_ON_MAT01);
-	/*ADC_ChannelCmd(LPC_ADC, 0, ENABLE);
+	/*ADC_StartCmd(LPC_ADC, ADC_START_ON_MAT01);
+	ADC_ChannelCmd(LPC_ADC, 0, ENABLE);
 	ADC_ChannelCmd(LPC_ADC, 1, ENABLE);
 	ADC_ChannelCmd(LPC_ADC, 2, ENABLE);
 	ADC_ChannelCmd(LPC_ADC, 3, ENABLE);*/
@@ -192,9 +192,9 @@ void confADC(void){
 void confUART(void){
 	UART_CFG_Type UARTConfigStruct;
 	UART_FIFO_CFG_Type UARTFIFOConfigStruct;
-	//configuración por defecto:
+	//Configuración por defecto:
 	UART_ConfigStructInit(&UARTConfigStruct);
-	//inicializa periférico
+	//Inicializa periférico
 	UART_Init(LPC_UART0, &UARTConfigStruct);
 	UART_FIFOConfigStructInit(&UARTFIFOConfigStruct);
 	//Inicializa FIFO
