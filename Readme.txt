@@ -3,7 +3,7 @@ TP DIGITAL III:
 ADC:
 	Controlado por Timer
 	Si tiene pin que se pone en 1 al sentir peso, el timer se inicia por dicho pin, gpio: flanco subida cuenta, flanco bajada no
-	Muestrea cada 250 ms
+	Muestrea cada 200 ms cada canal. Timer interrumpe cada 50ms y dispara el canal correspondiente.
 
 
 Multiplexación de display
@@ -28,7 +28,7 @@ Funciones:
 	Tomar lectura
 		
 GPIO:
-	-ADC					P0.23				(1 pin)
+	-ADC					P0.23-26			(4 pines)
 	-Teclado				P2.0-7				(8 pines)
 	-Displays				P0.4-11				(8 pines)	
 	-Multiplicación de displays		P0.12-20			(9 pines)
