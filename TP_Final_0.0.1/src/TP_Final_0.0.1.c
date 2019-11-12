@@ -170,11 +170,12 @@ void confADC(void){
 	confADCPin_0a3(2);
 	confADCPin_0a3(3);
 	ADC_Init(LPC_ADC, 200000);
+	//TODO revisar lo de abajo
 	//ADC_StartCmd(LPC_ADC, ADC_START_ON_MAT01);
-	ADC_ChannelCmd(LPC_ADC, 0, ENABLE);
+	/*ADC_ChannelCmd(LPC_ADC, 0, ENABLE);
 	ADC_ChannelCmd(LPC_ADC, 1, ENABLE);
 	ADC_ChannelCmd(LPC_ADC, 2, ENABLE);
-	ADC_ChannelCmd(LPC_ADC, 3, ENABLE);
+	ADC_ChannelCmd(LPC_ADC, 3, ENABLE);*/
 	ADC_IntConfig(LPC_ADC, ADC_ADINTEN0, ENABLE);
 	ADC_IntConfig(LPC_ADC, ADC_ADINTEN1, ENABLE);
 	ADC_IntConfig(LPC_ADC, ADC_ADINTEN2, ENABLE);
@@ -244,7 +245,19 @@ void SysTick_Handler(void){
  * 			NONE
  */
 void TIMER0_IRQHandler(void){
+	static channel = 0;
+
+	ADC_ChannelCmd(LPC_ADC, 0, DISABLE);
+	ADC_ChannelCmd(LPC_ADC, 1, DISABLE);
+	ADC_ChannelCmd(LPC_ADC, 2, DISABLE);
+	ADC_ChannelCmd(LPC_ADC, 3, DISABLE);
+
+	ADC_ChannelCmd(LPC_ADC, channel, ENABLE);
+
 	ADC_StartCmd(LPC_ADC, ADC_START_NOW);
+
+	channel++;
+
 	TIM_ClearIntPending(LPC_TIM0, TIM_MR0_INT);
 	return;
 }
