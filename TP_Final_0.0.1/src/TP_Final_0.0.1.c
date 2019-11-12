@@ -302,12 +302,25 @@ void UART0_IRQHandler(void){
 }
 
 void UART_IntTransmit(void){
-	/*static uint8_t i=0;
-	if (i<20){
-		//Envía información por Tx
-		UART_Send(LPC_UART0, info, sizeof(info), NONE_BLOCKING);
-		i++;
+
+	static uint8_t comando[]="ActualizarStock";
+	uint8_t mensaje[15]={};
+	uint8_t bandera=1;
+
+	UART_Receive(LPC_UART0, mensaje, sizeof(mensaje), BLOCKING);
+
+	for(uint8_t i=0; i<15; i++){
+		if(comando[i]!=mensaje[i]){
+			bandera=0;
+			break;
+		}
 	}
-	else
-		UART_IntConfig(LPC_UART0, UART_INTCFG_THRE, ENABLE);*/
+
+	/*TODO Ver donde se modifica stock
+
+	if(bandera) UART_Send(LPC_UART0, stock, sizeof(stock), NONE_BLOCKING);
+
+	else UART_IntConfig(LPC_UART0, UART_INTCFG_THRE, ENABLE);*/
+
+	return;
 }
