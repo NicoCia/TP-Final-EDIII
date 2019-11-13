@@ -1,9 +1,5 @@
 #include "LPC17xx.h"
-#include "lpc17xx_pinsel.h"
 #include "lpc17xx_systick.h"
-#include "lpc17xx_timer.h"
-#include "lpc17xx_uart.h"
-#include "lpc17xx_exti.h"
 #include "lpc17xx_gpio.h"
 #include "Multiplex.h"
 

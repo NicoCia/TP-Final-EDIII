@@ -1,10 +1,6 @@
 #include "LPC17xx.h"
 #include "lpc17xx_pinsel.h"
-#include "lpc17xx_adc.h"
-#include "lpc17xx_timer.h"
-#include "lpc17xx_systick.h"
 #include "lpc17xx_uart.h"
-#include "lpc17xx_exti.h"
 #include "lpc17xx_gpio.h"
 #include "Multiplex.h"
 #include "Pesaje.h"
@@ -191,7 +187,7 @@ void UART_IntTransmit(void){
 		}
 	}
 
-	/*TODO Ver donde se modifica stock*/
+	//TODO Ver donde se modifica stock
 
 	if(bandera) UART_Send(LPC_UART0, stock, sizeof(stock), BLOCKING);
 
