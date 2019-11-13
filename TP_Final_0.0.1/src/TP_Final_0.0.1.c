@@ -4,6 +4,8 @@
 #include "lpc17xx_gpio.h"
 #include "Multiplex.h"
 #include "Pesaje.h"
+#include "teclado.h"
+#include "logica.h"
 
 //void confEINT(void);
 void confUART(void);
@@ -17,8 +19,6 @@ void UART0_IRQHandler(void);
 
 void UART_IntTransmit(void);
 
-//TODO borrar esta funcion
-void getStockEnAscii(uint8_t *stock);
 #define SALIDA (uint8_t) 1
 
 
@@ -193,10 +193,5 @@ void UART_IntTransmit(void){
 
 	else UART_IntConfig(LPC_UART0, UART_INTCFG_THRE, ENABLE);
 
-	return;
-}
-
-//TODO borrar esta funcion
-void getStockEnAscii(uint8_t *stock){
 	return;
 }

@@ -9,7 +9,7 @@ src/TP_Final_0.0.1.o src/TP_Final_0.0.1.d: ../src/TP_Final_0.0.1.c \
  C:\Users\nicoc\Documents\Electronica\ Digital\ III\LPCXpresso\LPCXpresso_8.2.2_650\workspace2\CMSISv2p00_LPC17xx\Drivers\inc/lpc_types.h \
  C:\Users\nicoc\Documents\Electronica\ Digital\ III\LPCXpresso\LPCXpresso_8.2.2_650\workspace2\CMSISv2p00_LPC17xx\Drivers\inc/lpc17xx_uart.h \
  C:\Users\nicoc\Documents\Electronica\ Digital\ III\LPCXpresso\LPCXpresso_8.2.2_650\workspace2\CMSISv2p00_LPC17xx\Drivers\inc/lpc17xx_gpio.h \
- ../src/Multiplex.h ../src/Pesaje.h
+ ../src/Multiplex.h ../src/Pesaje.h ../src/teclado.h ../src/logica.h
 
 C:\Users\nicoc\Documents\Electronica\ Digital\ III\LPCXpresso\LPCXpresso_8.2.2_650\workspace2\CMSISv2p00_LPC17xx\inc/LPC17xx.h:
 
@@ -34,3 +34,7 @@ C:\Users\nicoc\Documents\Electronica\ Digital\ III\LPCXpresso\LPCXpresso_8.2.2_6
 ../src/Multiplex.h:
 
 ../src/Pesaje.h:
+
+../src/teclado.h:
+
+../src/logica.h:

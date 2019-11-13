@@ -32,6 +32,7 @@ typedef enum{MANUAL=10,PRECONF,CARGAR_VALORES,ENTER,CANCELAR,TARA}TECLAS;//TODO 
 */
 //TODO Borrar lo que sigue
 //typedef enum{CANTIDAD=2,MONTO=3};
+typedef enum{CODIGO=0};
 /*
 #define CODIGO			(uint8_t) 0		//TODO ver correspondencias
 #define PRECIO			(uint8_t) 1
@@ -73,6 +74,11 @@ void reempezarCompra();
 void modoModificarDatos(uint8_t tecla);
 void modificarDatos(uint8_t tecla);
 void reiniciarCuenta();
+void getStockEnAscii(uint8_t datosEnChar[]);
+void agregarDaC(uint8_t *datosEnChar,uint16_t datoNumerico,uint8_t *contaChar);
+void pruebaDemo();
+uint8_t pasarAAscii(uint16_t num);
+
 
 void initTabla(){
 	for(uint8_t i=0;i<100;i++){
@@ -308,3 +314,82 @@ void reiniciarCuenta(){
 	return;
 }
 //---------------------------------------------------------------------------------------------------------------------------
+//uint8_t* getStockEnAscii(){
+void getStockEnAscii(uint8_t datosEnChar[]){
+//	uint8_t datosEnChar[15000]="";
+	uint8_t contaChar=0;											//Contador de cuántas letras guardé en el arreglo
+	for(uint8_t i=0;i<100;i++){										//Recorro la matriz
+		if(datos[i][0]!=100){										//Si no hay nada cargado acá
+			for(uint8_t j=0;j<3;j++){
+				agregarDaC(datosEnChar,datos[i][j],&contaChar);
+				datosEnChar[contaChar]='\t';
+				contaChar++;
+			}
+			datosEnChar[contaChar]='\n';
+			contaChar++;
+			datosEnChar[contaChar]='\r';
+			contaChar++;
+		}
+	}
+//	return datosEnChar;
+	return;
+}
+
+void agregarDaC(uint8_t *datosEnChar,uint16_t datoNumerico,uint8_t *contaChar){
+	uint8_t bandera=0;
+	while(datoNumerico>9){
+		datosEnChar[*contaChar]=pasarAAscii(datoNumerico%10);
+		datoNumerico=datoNumerico/10;
+		*contaChar++;
+
+	}
+	datosEnChar[*contaChar]=pasarAAscii(datoNumerico);
+	*contaChar++;
+	return;
+}
+
+uint8_t pasarAAscii(uint16_t num){
+	switch(num){
+		case 0:	return '0';
+		case 1: return '1';
+		case 2: return '2';
+		case 3: return '3';
+		case 4: return '4';
+		case 5: return '5';
+		case 6: return '6';
+		case 7: return '7';
+		case 8: return '8';
+		case 9: return '9';
+		default: return ' ';
+	}
+}
+//--------------------------------------------------------------------------------------------------------------------------------------
+
+void pruebaDemo(){
+	datos[5][CODIGO]=5;
+	datos[5][CANTIDAD]=12000;							//Cantidad en gramos
+	datos[5][PRECIO]=25000;								//Precio en centavos
+
+	datos[39][CODIGO]=39;
+	datos[39][CANTIDAD]=12000;							//Cantidad en gramos
+	datos[39][PRECIO]=42000;							//Precio en centavos
+
+	datos[10][CODIGO]=10;
+	datos[10][CANTIDAD]=50000;							//Cantidad en gramos
+	datos[10][PRECIO]=47000;							//Precio en centavos
+
+	datos[26][CODIGO]=26;
+	datos[26][CANTIDAD]=42000;							//Cantidad en gramos
+	datos[26][PRECIO]=37500;							//Precio en centavos
+
+	datos[25][CODIGO]=26;
+	datos[25][CANTIDAD]=22000;							//Cantidad en gramos
+	datos[25][PRECIO]=25000;							//Precio en centavos
+
+	datos[13][CODIGO]=13;
+	datos[13][CANTIDAD]=33000;							//Cantidad en gramos
+	datos[13][PRECIO]=39000;							//Precio en centavos
+
+	return;
+
+}
