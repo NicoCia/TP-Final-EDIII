@@ -7,6 +7,7 @@
 
 #ifndef LOGICA_H_
 #define LOGICA_H_
+#include "LPC17xx.h"
 
 extern void getStockEnAscii(uint8_t datosEnChar[]);
 extern void accion(uint8_t tecla);

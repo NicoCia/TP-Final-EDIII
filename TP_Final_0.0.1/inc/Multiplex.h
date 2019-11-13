@@ -1,5 +1,6 @@
 #ifndef MULTIPLEX_H_
 #define MULTIPLEX_H_
+#include "LPC17xx.h"
 
 typedef enum {NO = 0, SI} Decimal;
 typedef enum {PRECIO = 1, PESO, CANTIDAD = 2, MONTO, TECLADO} Bloque;
