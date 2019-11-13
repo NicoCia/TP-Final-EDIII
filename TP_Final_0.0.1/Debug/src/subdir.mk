@@ -5,18 +5,21 @@
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
 ../src/Multiplex.c \
+../src/Pesaje.c \
 ../src/TP_Final_0.0.1.c \
 ../src/cr_startup_lpc175x_6x.c \
 ../src/crp.c 
 
 OBJS += \
 ./src/Multiplex.o \
+./src/Pesaje.o \
 ./src/TP_Final_0.0.1.o \
 ./src/cr_startup_lpc175x_6x.o \
 ./src/crp.o 
 
 C_DEPS += \
 ./src/Multiplex.d \
+./src/Pesaje.d \
 ./src/TP_Final_0.0.1.d \
 ./src/cr_startup_lpc175x_6x.d \
 ./src/crp.d 

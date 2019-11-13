@@ -1,4 +1,4 @@
-src/TP_Final_0.0.1.o src/TP_Final_0.0.1.d: ../src/TP_Final_0.0.1.c \
+src/Pesaje.o src/Pesaje.d: ../src/Pesaje.c \
  C:\Users\nicoc\Documents\Electronica\ Digital\ III\LPCXpresso\LPCXpresso_8.2.2_650\workspace2\CMSISv2p00_LPC17xx\inc/LPC17xx.h \
  C:\Users\nicoc\Documents\Electronica\ Digital\ III\LPCXpresso\LPCXpresso_8.2.2_650\workspace2\CMSISv2p00_LPC17xx\inc/core_cm3.h \
  C:\Users\nicoc\Documents\Electronica\ Digital\ III\LPCXpresso\LPCXpresso_8.2.2_650\workspace2\CMSISv2p00_LPC17xx\inc/core_cmInstr.h \
