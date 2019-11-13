@@ -9,12 +9,13 @@
 #include "Multiplex.h"
 #include "Pesaje.h"
 
-void confEINT(void);
+//void confEINT(void);
 void confUART(void);
 void confGPIO(void);
 
 void confUARTPin(void);
 void confEINTPin(uint8_t num);
+void confPinSal(uint8_t puerto,uint8_t primerBit, uint8_t ultimoBit);
 
 void UART0_IRQHandler(void);
 
@@ -39,7 +40,7 @@ int main(void) {
  * Configura el Pin de la interrupcion externa
  * Param:
  * 			uint8_t num Debe ser un número entero entre 0 y 3
- */
+ *
 void confEINTPin(uint8_t num){
 	if(num<4){
 		PINSEL_CFG_Type PinCfg;
@@ -53,7 +54,7 @@ void confEINTPin(uint8_t num){
 	}
 	return;
 }
-
+*/
 /*
  * Configura el Pin de Tx y Rx
  * Param:
@@ -99,7 +100,7 @@ void confPinSal(uint8_t puerto,uint8_t primerBit, uint8_t ultimoBit){
  * 			uint8_t primerBit  Primer pin a configurar. Debe ser un valor entre 0 y 32
  * 			uint8_t ultimoBit  Ultimo bit a configurar. Debe ser un valor entre 0 y 32, y mayor a primerBit
  * 			uint8_t valor	   Limpia si valor=0, Setea si valor=1;
- */
+ *
 void confPinSoC(uint8_t puerto,uint8_t primerBit, uint8_t ultimoBit,uint8_t valor){
 	uint32_t aux;
 	if(puerto<4&&primerBit<ultimoBit&&primerBit<32&&ultimoBit<32){		//Realiza controles
@@ -113,7 +114,7 @@ void confPinSoC(uint8_t puerto,uint8_t primerBit, uint8_t ultimoBit,uint8_t valo
 	}
 	return;
 
-}
+}*/
 
 /*Configuracion UART0
  * Param:
