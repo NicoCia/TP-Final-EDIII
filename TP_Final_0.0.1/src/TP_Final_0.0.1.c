@@ -29,9 +29,13 @@ void UART_IntTransmit(void);
 int main(void) {
 
 
-//	while(1) {
-//        i++ ;
-//    }
+/*	confADC();
+ * 	confSYSTICK(10);
+ * 	confUART();
+ * 	confGPIO();
+ *
+ * 	while(1) {}
+ */
     return 0 ;
 }
 
