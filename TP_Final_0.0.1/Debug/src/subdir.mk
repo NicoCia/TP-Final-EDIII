@@ -4,27 +4,33 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
+../src/GPIO.c \
 ../src/Multiplex.c \
 ../src/Pesaje.c \
 ../src/TP_Final_0.0.1.c \
+../src/Transmision.c \
 ../src/cr_startup_lpc175x_6x.c \
 ../src/crp.c \
 ../src/logica.c \
 ../src/teclado.c 
 
 OBJS += \
+./src/GPIO.o \
 ./src/Multiplex.o \
 ./src/Pesaje.o \
 ./src/TP_Final_0.0.1.o \
+./src/Transmision.o \
 ./src/cr_startup_lpc175x_6x.o \
 ./src/crp.o \
 ./src/logica.o \
 ./src/teclado.o 
 
 C_DEPS += \
+./src/GPIO.d \
 ./src/Multiplex.d \
 ./src/Pesaje.d \
 ./src/TP_Final_0.0.1.d \
+./src/Transmision.d \
 ./src/cr_startup_lpc175x_6x.d \
 ./src/crp.d \
 ./src/logica.d \

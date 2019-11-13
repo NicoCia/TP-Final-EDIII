@@ -7,6 +7,7 @@
 
 #ifndef PESAJE_H_
 #define PESAJE_H_
+#include "LPC17xx.h"
 
 extern void confADC(void);
 extern uint16_t getPeso(void);

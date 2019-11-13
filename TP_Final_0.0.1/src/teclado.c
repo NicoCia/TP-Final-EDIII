@@ -1,5 +1,6 @@
 #include <logica.h>
 #include <Multiplex.h>
+#include <GPIO.h>
 #include <teclado.h>
 #include "LPC17xx.h"
 #include "lpc17xx_pinsel.h"

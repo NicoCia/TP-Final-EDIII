@@ -7,6 +7,8 @@ src/TP_Final_0.0.1.o src/TP_Final_0.0.1.d: ../src/TP_Final_0.0.1.c \
  C:\Users\nicoc\Documents\Electronica\ Digital\ III\LPCXpresso\LPCXpresso_8.2.2_650\workspace2\CMSISv2p00_LPC17xx\inc/system_LPC17xx.h \
  C:\Users\nicoc\git\TP-Final-EDIII\TP_Final_0.0.1\inc/Multiplex.h \
  C:\Users\nicoc\git\TP-Final-EDIII\TP_Final_0.0.1\inc/Pesaje.h \
+ C:\Users\nicoc\git\TP-Final-EDIII\TP_Final_0.0.1\inc/Transmision.h \
+ C:\Users\nicoc\git\TP-Final-EDIII\TP_Final_0.0.1\inc/GPIO.h \
  C:\Users\nicoc\git\TP-Final-EDIII\TP_Final_0.0.1\inc/teclado.h \
  C:\Users\nicoc\Documents\Electronica\ Digital\ III\LPCXpresso\LPCXpresso_8.2.2_650\workspace2\CMSISv2p00_LPC17xx\Drivers\inc/lpc17xx_pinsel.h \
  C:\Users\nicoc\Documents\Electronica\ Digital\ III\LPCXpresso\LPCXpresso_8.2.2_650\workspace2\CMSISv2p00_LPC17xx\inc/lpc17xx.h \
@@ -29,6 +31,10 @@ C:\Users\nicoc\Documents\Electronica\ Digital\ III\LPCXpresso\LPCXpresso_8.2.2_6
 C:\Users\nicoc\git\TP-Final-EDIII\TP_Final_0.0.1\inc/Multiplex.h:
 
 C:\Users\nicoc\git\TP-Final-EDIII\TP_Final_0.0.1\inc/Pesaje.h:
+
+C:\Users\nicoc\git\TP-Final-EDIII\TP_Final_0.0.1\inc/Transmision.h:
+
+C:\Users\nicoc\git\TP-Final-EDIII\TP_Final_0.0.1\inc/GPIO.h:
 
 C:\Users\nicoc\git\TP-Final-EDIII\TP_Final_0.0.1\inc/teclado.h:
 

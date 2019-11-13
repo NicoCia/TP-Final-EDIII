@@ -7,6 +7,7 @@
 
 #ifndef TECLADO_H_
 #define TECLADO_H_
+#include "LPC17xx.h"
 
 
 
