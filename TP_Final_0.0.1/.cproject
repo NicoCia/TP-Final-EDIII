@@ -37,6 +37,7 @@
 								<option id="com.crt.advproject.gcc.hdrlib.144682633" name="Library headers" superClass="com.crt.advproject.gcc.hdrlib" value="Redlib" valueType="enumerated"/>
 								<option id="com.crt.advproject.gcc.specs.1306020652" name="Specs" superClass="com.crt.advproject.gcc.specs" value="com.crt.advproject.gcc.specs.codered" valueType="enumerated"/>
 								<option id="gnu.c.compiler.option.include.paths.25914565" name="Include paths (-I)" superClass="gnu.c.compiler.option.include.paths" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/TP_Final_0.0.1/inc}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/CMSISv2p00_LPC17xx/Drivers/inc}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/inc}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/CMSISv2p00_LPC17xx/inc}&quot;"/>

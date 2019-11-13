@@ -155,7 +155,7 @@ Discarded input sections
  .debug_macro   0x00000000      0x88c ./src/crp.o
  .debug_macro   0x00000000       0x34 ./src/crp.o
  .debug_line    0x00000000       0x78 ./src/crp.o
- .debug_str     0x00000000     0x25db ./src/crp.o
+ .debug_str     0x00000000     0x25c4 ./src/crp.o
  .comment       0x00000000       0x6f ./src/crp.o
  .ARM.attributes
                 0x00000000       0x33 ./src/crp.o
@@ -1241,30 +1241,30 @@ OUTPUT(TP_Final_0.0.1.axf elf32-littlearm)
  .debug_line    0x000021af      0x4d7 C:\Users\nicoc\Documents\Electronica Digital III\LPCXpresso\LPCXpresso_8.2.2_650\workspace2\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_timer.o)
  .debug_line    0x00002686      0x7fd C:\Users\nicoc\Documents\Electronica Digital III\LPCXpresso\LPCXpresso_8.2.2_650\workspace2\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_uart.o)
 
-.debug_str      0x00000000     0xe6e6
+.debug_str      0x00000000     0xe698
  .debug_str     0x00000000     0x82ec ./src/Multiplex.o
                                0x837b (size before relaxing)
  .debug_str     0x000082ec     0x1a3f ./src/Pesaje.o
                                0x995f (size before relaxing)
  .debug_str     0x00009d2b     0x1ad1 ./src/TP_Final_0.0.1.o
                                0xa359 (size before relaxing)
- .debug_str     0x0000b7fc      0x200 ./src/cr_startup_lpc175x_6x.o
-                               0x26c3 (size before relaxing)
- .debug_str     0x0000b9fc      0x318 ./src/logica.o
+ .debug_str     0x0000b7fc      0x1b2 ./src/cr_startup_lpc175x_6x.o
+                               0x26ac (size before relaxing)
+ .debug_str     0x0000b9ae      0x318 ./src/logica.o
                                0x90cf (size before relaxing)
- .debug_str     0x0000bd14      0x1df ./src/teclado.o
+ .debug_str     0x0000bcc6      0x1df ./src/teclado.o
                                0x9265 (size before relaxing)
- .debug_str     0x0000bef3      0x53d C:\Users\nicoc\Documents\Electronica Digital III\LPCXpresso\LPCXpresso_8.2.2_650\workspace2\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(system_LPC17xx.o)
+ .debug_str     0x0000bea5      0x53d C:\Users\nicoc\Documents\Electronica Digital III\LPCXpresso\LPCXpresso_8.2.2_650\workspace2\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(system_LPC17xx.o)
                                0x816f (size before relaxing)
- .debug_str     0x0000c430     0x1594 C:\Users\nicoc\Documents\Electronica Digital III\LPCXpresso\LPCXpresso_8.2.2_650\workspace2\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_adc.o)
+ .debug_str     0x0000c3e2     0x1594 C:\Users\nicoc\Documents\Electronica Digital III\LPCXpresso\LPCXpresso_8.2.2_650\workspace2\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_adc.o)
                                0x9d67 (size before relaxing)
- .debug_str     0x0000d9c4      0x301 C:\Users\nicoc\Documents\Electronica Digital III\LPCXpresso\LPCXpresso_8.2.2_650\workspace2\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_gpio.o)
+ .debug_str     0x0000d976      0x301 C:\Users\nicoc\Documents\Electronica Digital III\LPCXpresso\LPCXpresso_8.2.2_650\workspace2\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_gpio.o)
                                0x86d9 (size before relaxing)
- .debug_str     0x0000dcc5       0x2d C:\Users\nicoc\Documents\Electronica Digital III\LPCXpresso\LPCXpresso_8.2.2_650\workspace2\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_libcfg_default.o)
+ .debug_str     0x0000dc77       0x2d C:\Users\nicoc\Documents\Electronica Digital III\LPCXpresso\LPCXpresso_8.2.2_650\workspace2\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_libcfg_default.o)
                                0x3f89 (size before relaxing)
- .debug_str     0x0000dcf2      0x2a6 C:\Users\nicoc\Documents\Electronica Digital III\LPCXpresso\LPCXpresso_8.2.2_650\workspace2\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_timer.o)
+ .debug_str     0x0000dca4      0x2a6 C:\Users\nicoc\Documents\Electronica Digital III\LPCXpresso\LPCXpresso_8.2.2_650\workspace2\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_timer.o)
                                0xa38e (size before relaxing)
- .debug_str     0x0000df98      0x74e C:\Users\nicoc\Documents\Electronica Digital III\LPCXpresso\LPCXpresso_8.2.2_650\workspace2\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_uart.o)
+ .debug_str     0x0000df4a      0x74e C:\Users\nicoc\Documents\Electronica Digital III\LPCXpresso\LPCXpresso_8.2.2_650\workspace2\CMSISv2p00_LPC17xx\Debug\libCMSISv2p00_LPC17xx.a(lpc17xx_uart.o)
                                0xb42f (size before relaxing)
 
 .comment        0x00000000       0xdc
