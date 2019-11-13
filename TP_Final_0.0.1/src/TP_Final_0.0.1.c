@@ -21,6 +21,8 @@ void UART0_IRQHandler(void);
 
 void UART_IntTransmit(void);
 
+//TODO borrar esta funcion
+void getStockEnAscii(uint8_t *stock);
 #define SALIDA (uint8_t) 1
 
 
@@ -176,22 +178,29 @@ void UART_IntTransmit(void){
 
 	static uint8_t comando[]="ActualizarStock";
 	uint8_t mensaje[15]={};
-	//uint8_t bandera=1;
+	uint8_t stock[]={};
+	getStockEnAscii(stock);
+	uint8_t bandera=1;
 
 	UART_Receive(LPC_UART0, mensaje, sizeof(mensaje), BLOCKING);
 
 	for(uint8_t i=0; i<15; i++){
 		if(comando[i]!=mensaje[i]){
-			//bandera=0;
+			bandera=0;
 			break;
 		}
 	}
 
-	/*TODO Ver donde se modifica stock
+	/*TODO Ver donde se modifica stock*/
 
-	if(bandera) UART_Send(LPC_UART0, stock, sizeof(stock), NONE_BLOCKING);
+	if(bandera) UART_Send(LPC_UART0, stock, sizeof(stock), BLOCKING);
 
-	else UART_IntConfig(LPC_UART0, UART_INTCFG_THRE, ENABLE);*/
+	else UART_IntConfig(LPC_UART0, UART_INTCFG_THRE, ENABLE);
 
+	return;
+}
+
+//TODO borrar esta funcion
+void getStockEnAscii(uint8_t *stock){
 	return;
 }
