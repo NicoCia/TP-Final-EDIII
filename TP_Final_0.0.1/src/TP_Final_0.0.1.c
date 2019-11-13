@@ -1,11 +1,11 @@
+#include <logica.h>
+#include <Multiplex.h>
+#include <Pesaje.h>
+#include <teclado.h>
 #include "LPC17xx.h"
 #include "lpc17xx_pinsel.h"
 #include "lpc17xx_uart.h"
 #include "lpc17xx_gpio.h"
-#include "Multiplex.h"
-#include "Pesaje.h"
-#include "teclado.h"
-#include "logica.h"
 
 //void confEINT(void);
 void confUART(void);

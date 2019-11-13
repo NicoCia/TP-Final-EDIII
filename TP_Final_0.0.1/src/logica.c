@@ -4,14 +4,14 @@
  *  Created on: 10 de nov. de 2019
  *      Author: nico-
  */
+#include <Multiplex.h>
+#include <Pesaje.h>
+#include <teclado.h>
 #include "LPC17xx.h"
-#include "teclado.h"
 #include "lpc17xx_pinsel.h"
 #include "lpc17xx_timer.h"
 #include "lpc17xx_exti.h"
 #include "lpc17xx_gpio.h"
-#include "Multiplex.h"
-#include "Pesaje.h"
 
 
 typedef enum{MODO_PESANDO=0,MODO_MANUAL,MODO_PRECONFIGURADO,SUMA_PARCIAL,MODO_MODIFICAR_DATOS}MODOS;

@@ -4,12 +4,12 @@
  *  Created on: 13 de nov. de 2019
  *      Author: nicoc
  */
+#include <Multiplex.h>
+#include <Pesaje.h>
 #include "LPC17xx.h"
 #include "lpc17xx_pinsel.h"
 #include "lpc17xx_adc.h"
 #include "lpc17xx_timer.h"
-#include "Multiplex.h"
-#include "Pesaje.h"
 
 void confTIM(void);
 void confADCPin_0a3(uint8_t num);
