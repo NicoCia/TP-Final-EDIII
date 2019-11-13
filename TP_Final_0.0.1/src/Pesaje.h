@@ -9,5 +9,7 @@
 #define PESAJE_H_
 
 extern void confADC(void);
+extern uint16_t getPeso(void);
+extern void tarar(void);
 
 #endif /* PESAJE_H_ */

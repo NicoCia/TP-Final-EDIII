@@ -8,21 +8,27 @@ C_SRCS += \
 ../src/Pesaje.c \
 ../src/TP_Final_0.0.1.c \
 ../src/cr_startup_lpc175x_6x.c \
-../src/crp.c 
+../src/crp.c \
+../src/logica.c \
+../src/teclado.c 
 
 OBJS += \
 ./src/Multiplex.o \
 ./src/Pesaje.o \
 ./src/TP_Final_0.0.1.o \
 ./src/cr_startup_lpc175x_6x.o \
-./src/crp.o 
+./src/crp.o \
+./src/logica.o \
+./src/teclado.o 
 
 C_DEPS += \
 ./src/Multiplex.d \
 ./src/Pesaje.d \
 ./src/TP_Final_0.0.1.d \
 ./src/cr_startup_lpc175x_6x.d \
-./src/crp.d 
+./src/crp.d \
+./src/logica.d \
+./src/teclado.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes
