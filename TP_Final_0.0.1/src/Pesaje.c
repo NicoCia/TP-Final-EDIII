@@ -18,8 +18,15 @@
 void confTIM(void);
 void confADCPin_0a3(uint8_t num);
 void confADC(void);
+uint16_t getPeso(void);
+void tarar(void);
 void ADC_IRQHanler(void);
 void TIMER0_IRQHandler(void);
+
+uint16_t mascara = 0b0000111111111100;
+uint16_t resolucion = 5;
+uint16_t peso;
+static uint16_t tara = 0;
 
 /*Configuracion Timer0 para producir un Match cada 50 ms
  * Param:
@@ -83,6 +90,15 @@ void confADC(void){
 	return;
 }
 
+uint16_t getPeso(void){
+	return peso;
+}
+
+void tarar(void){
+	tara=peso;
+	return;
+}
+
 /*Rutina de servicio de interrupcion de ADC
  * Param:
  * 			NONE
@@ -93,16 +109,22 @@ void ADC_IRQHanler(void){
 	static uint16_t valADC3=0;
 	static uint16_t valADC4=0;
 	uint16_t dato;
+	//uint16_t monto;
 
-	if(ADC_ChannelGetStatus(LPC_ADC, 0, 1)) valADC1 = ADC_ChannelGetData(LPC_ADC, 0);
-	if(ADC_ChannelGetStatus(LPC_ADC, 1, 1)) valADC1 = ADC_ChannelGetData(LPC_ADC, 1);
-	if(ADC_ChannelGetStatus(LPC_ADC, 2, 1)) valADC1 = ADC_ChannelGetData(LPC_ADC, 2);
-	if(ADC_ChannelGetStatus(LPC_ADC, 3, 1)) valADC1 = ADC_ChannelGetData(LPC_ADC, 3);
+	if(ADC_ChannelGetStatus(LPC_ADC, 0, 1)) valADC1 = (ADC_ChannelGetData(LPC_ADC, 0)&mascara)>>2;
+	else if(ADC_ChannelGetStatus(LPC_ADC, 1, 1)) valADC2 = (ADC_ChannelGetData(LPC_ADC, 1)&mascara)>>2;
+	else if(ADC_ChannelGetStatus(LPC_ADC, 2, 1)) valADC3 = (ADC_ChannelGetData(LPC_ADC, 2)&mascara)>>2;
+	else if(ADC_ChannelGetStatus(LPC_ADC, 3, 1)) valADC4 = (ADC_ChannelGetData(LPC_ADC, 3)&mascara)>>2;
 
-	dato = valADC1+valADC2+valADC3+valADC4;
+	dato = (valADC1+valADC2+valADC3+valADC4);
+	peso = dato*resolucion - (dato/25)*3 - tara;
+	convert(peso,PESO);
 
-	convert(dato,PESO);
-
+	/*if(estaPesando()) {
+		monto=getPrecio()*peso;
+		convert(monto, MONTO);
+	}
+	*/
 	return;
 }
 

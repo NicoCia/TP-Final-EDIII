@@ -39,8 +39,9 @@ void convert(uint16_t dato, Bloque i){
 		nums[dig][0]=parcial;
 		/*TODO
 		 * implementar que al estar en bloque TECLADO, los displays que no se utilizan en el codigo se apaguen
-		 if(i==TECLADO)*/
-		if((i!=TECLADO)&&(dig==2||dig==6||dig==12))nums[dig][1]=SI;
+		 */
+		 /*if(i==TECLADO)
+		else */if(dig==2||dig==6||dig==12)nums[dig][1]=SI;
 		else nums[dig][1]=NO;
 		dig++;
 		div=div/10;
