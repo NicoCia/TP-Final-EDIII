@@ -21,7 +21,7 @@ void TIMER0_IRQHandler(void);
 
 uint16_t mascara = 0b0000111111111100;
 uint16_t resolucion = 5;
-uint16_t peso;
+uint16_t peso=5;
 static uint16_t tara = 0;
 
 /*Configuracion Timer0 para producir un Match cada 50 ms
@@ -43,6 +43,7 @@ void confTIM(void){
 	MATCHcfg.MatchValue = 50000;
 	TIM_ConfigMatch(LPC_TIM0, &MATCHcfg);
 
+	TIM_Cmd(LPC_TIM0, ENABLE);
 	NVIC_EnableIRQ(TIMER0_IRQn);
 	return;
 }

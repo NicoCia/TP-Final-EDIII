@@ -12,11 +12,13 @@
 int main(void) {
 
 
-	confADC();
+	//confADC();
   	confSYSTICK(10);
-  	confUART();
-  	confGPIO();
-
+	confUART(); //TODO esta cambiar codigo de error
+	initTabla();
+  	pruebaDemo();
+	//initTeclado();
+	//confGPIO();
   	while(1) {}
 
     return 0 ;

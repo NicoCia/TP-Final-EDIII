@@ -32,7 +32,7 @@ typedef enum{MANUAL=10,PRECONF,CARGAR_VALORES,ENTER,CANCELAR,TARA}TECLAS;//TODO 
 */
 //TODO Borrar lo que sigue
 //typedef enum{CANTIDAD=2,MONTO=3};
-typedef enum{CODIGO=0};
+typedef enum{CODIGO=0};//TODO usar
 /*
 #define CODIGO			(uint8_t) 0		//TODO ver correspondencias
 #define PRECIO			(uint8_t) 1
@@ -81,8 +81,10 @@ uint8_t pasarAAscii(uint16_t num);
 
 
 void initTabla(){
+	//TODO
 	for(uint8_t i=0;i<100;i++){
-		for(uint8_t j=0;j<3;j++){
+		datos[i][0]=100;
+		for(uint8_t j=1;j<3;j++){
 			datos[i][j]=0;
 		}
 	}
@@ -317,34 +319,36 @@ void reiniciarCuenta(){
 //uint8_t* getStockEnAscii(){
 void getStockEnAscii(uint8_t datosEnChar[]){
 //	uint8_t datosEnChar[15000]="";
-	uint8_t contaChar=0;											//Contador de cuántas letras guardé en el arreglo
+	uint8_t contaChar[1]={0};
+	//uint8_t puntContaChar[]={contaChar};//Contador de cuántas letras guardé en el arreglo
 	for(uint8_t i=0;i<100;i++){										//Recorro la matriz
 		if(datos[i][0]!=100){										//Si no hay nada cargado acá
 			for(uint8_t j=0;j<3;j++){
-				agregarDaC(datosEnChar,datos[i][j],&contaChar);
-				datosEnChar[contaChar]='\t';
-				contaChar++;
+				agregarDaC(datosEnChar,datos[i][j],contaChar);
+				datosEnChar[contaChar[0]]='\t';
+				contaChar[0]++;
 			}
-			datosEnChar[contaChar]='\n';
-			contaChar++;
-			datosEnChar[contaChar]='\r';
-			contaChar++;
+			datosEnChar[contaChar[0]]='\n';
+			contaChar[0]++;
+			datosEnChar[contaChar[0]]='\r';
+			contaChar[0]++;
 		}
 	}
+	datosEnChar[contaChar[0]]='z';
 //	return datosEnChar;
 	return;
 }
 
 void agregarDaC(uint8_t *datosEnChar,uint16_t datoNumerico,uint8_t *contaChar){
-	uint8_t bandera=0;
+	//uint8_t bandera=0;
 	while(datoNumerico>9){
-		datosEnChar[*contaChar]=pasarAAscii(datoNumerico%10);
+		datosEnChar[contaChar[0]]=pasarAAscii(datoNumerico%10);
 		datoNumerico=datoNumerico/10;
-		*contaChar++;
+		contaChar[0]++;
 
 	}
-	datosEnChar[*contaChar]=pasarAAscii(datoNumerico);
-	*contaChar++;
+	datosEnChar[contaChar[0]]=pasarAAscii(datoNumerico);
+	contaChar[0]++;
 	return;
 }
 

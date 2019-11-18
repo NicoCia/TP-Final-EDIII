@@ -9,6 +9,6 @@
 #define TECLADO_H_
 #include "LPC17xx.h"
 
-
+extern void initTeclado(void);
 
 #endif /* TECLADO_H_ */

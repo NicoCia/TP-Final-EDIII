@@ -11,5 +11,7 @@
 
 extern void getStockEnAscii(uint8_t datosEnChar[]);
 extern void accion(uint8_t tecla);
+extern void pruebaDemo();
+extern void initTabla();
 
 #endif /* LOGICA_H_ */
