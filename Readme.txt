@@ -12,12 +12,12 @@ Multiplexación de display
 	
 Teclado Matricial:
 	Numeros son números
-	A: 
-	B: Cancelar
-	C: Cambia modo
-	D: Final (Suma al apretar una vez y termina al apretar 2 veces).
-	*: Enter
-	#:
+	A: Manual
+	B: Código
+	C: Cargar datos
+	D: Enter (Suma al apretar una vez y termina al apretar 2 veces).
+	*: Cancelar
+	#: Tarar
 
 Modos:
 	Manual
