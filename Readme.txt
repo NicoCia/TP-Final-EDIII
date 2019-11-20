@@ -33,8 +33,13 @@ GPIO:
 	-Displays				P0.4-11				(8 pines)	
 	-Multiplicación de displays		P0.0-1				(2 pines)
 						P0.15-18			(4 pines)
-						P0.27-31			(5 pines)
-						P2.8-13				(6 pines)
+						P0.21-22			(2 pines)
+						P0.27-28			(2 pines)
+						P0.30-31			(2 pines)
+						
+	
+						P2.10-12			(3 pines)
+	
 	-UART					P0.2-3				(2 pines)
 	
 
