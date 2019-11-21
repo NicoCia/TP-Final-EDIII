@@ -47,7 +47,7 @@ static uint16_t precio=0;
 static uint8_t codigo=0;
 static uint8_t sumaParcial=0;
 static uint8_t cantCompras=0;
-static uint8_t tipoCompra=0;
+static uint8_t tipoCompra=MANUAL;
 static uint8_t vendido=0;
 static uint8_t estado=0;
 static uint8_t codigoAMod=0;
@@ -138,8 +138,8 @@ void agregarCompra(){
 	else if	(tipoCompra==PRECONF)	compra[cantCompras][0]=codigo;		//Si es preconf, pongo el codigo
 	compra[cantCompras][PRECIO]=	precio;								//Pongo el precio
 	compra[cantCompras][CANTIDAD]=	getPeso();							//Peso
-	compra[cantCompras][MONTO]=		precio*getPeso();					//Monto
-	sumaParcial+=precio*getPeso();											//Agrego a la suma parcial
+	compra[cantCompras][MONTO]=		precio*getPeso()/1000;				//Monto
+	sumaParcial+=precio*getPeso()/1000;										//Agrego a la suma parcial
 	cantCompras++;														//Incremento el contador de productos comprados
 	return;
 }
@@ -234,8 +234,8 @@ void modoFinal(uint8_t tecla){
 void finalizarCompra(){
 	for(uint8_t i=0;i<cantCompras;i++){
 		if(compra[i][0]!=100){
-			if(datos[compra[i][0]][1]>compra[i][CANTIDAD])	datos[compra[i][0]][1]=0;
-			else 											datos[compra[i][0]][1]-=compra[i][CANTIDAD];
+			if(datos[compra[i][0]][CANTIDAD]<compra[i][CANTIDAD])	datos[compra[i][0]][CANTIDAD]=0;
+			else 													datos[compra[i][0]][CANTIDAD]-=compra[i][CANTIDAD];
 		}
 	}
 	vendido+=sumaParcial;
@@ -340,16 +340,24 @@ void getStockEnAscii(uint8_t datosEnChar[]){
 	return;
 }
 
-void agregarDaC(uint8_t *datosEnChar,uint16_t datoNumerico,uint8_t *contaChar){
-	//uint8_t bandera=0;
-	while(datoNumerico>9){
-		datosEnChar[contaChar[0]]=pasarAAscii(datoNumerico%10);
-		datoNumerico=datoNumerico/10;
-		contaChar[0]++;
 
-	}
-	datosEnChar[contaChar[0]]=pasarAAscii(datoNumerico);
-	contaChar[0]++;
+void agregarDaC(uint8_t *datosEnChar,uint16_t datoNumerico,uint8_t *contaChar){
+
+		uint8_t aux[8];
+		uint8_t conta=0;
+		while(datoNumerico>9){
+			aux[conta]=datoNumerico%10;
+			datoNumerico=datoNumerico/10;
+			conta++;
+		}
+		aux[conta]=datoNumerico;
+		conta++;
+
+		for(uint8_t i=1;i<conta+1;i++){
+			datosEnChar[contaChar[0]]=pasarAAscii(aux[conta-i]);
+			contaChar[0]++;
+		}
+
 	return;
 }
 
@@ -373,15 +381,15 @@ uint8_t pasarAAscii(uint16_t num){
 void pruebaDemo(){
 	datos[5][CODIGO]=5;
 	datos[5][CANTIDAD]=12000;							//Cantidad en gramos
-	datos[5][PRECIO]=25000;								//Precio en centavos
+	datos[5][PRECIO]=2500;								//Precio en centavos
 
 	datos[39][CODIGO]=39;
 	datos[39][CANTIDAD]=12000;							//Cantidad en gramos
-	datos[39][PRECIO]=42000;							//Precio en centavos
+	datos[39][PRECIO]=4200;								//Precio en centavos
 
 	datos[10][CODIGO]=10;
 	datos[10][CANTIDAD]=50000;							//Cantidad en gramos
-	datos[10][PRECIO]=47000;							//Precio en centavos
+	datos[10][PRECIO]=4700;								//Precio en centavos
 
 	datos[26][CODIGO]=26;
 	datos[26][CANTIDAD]=42000;							//Cantidad en gramos
@@ -389,11 +397,11 @@ void pruebaDemo(){
 
 	datos[25][CODIGO]=26;
 	datos[25][CANTIDAD]=22000;							//Cantidad en gramos
-	datos[25][PRECIO]=25000;							//Precio en centavos
+	datos[25][PRECIO]=2500;								//Precio en centavos
 
 	datos[13][CODIGO]=13;
 	datos[13][CANTIDAD]=33000;							//Cantidad en gramos
-	datos[13][PRECIO]=39000;							//Precio en centavos
+	datos[13][PRECIO]=3900;								//Precio en centavos
 
 	return;
 
