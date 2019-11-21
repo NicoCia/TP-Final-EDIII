@@ -84,8 +84,6 @@ void confADC(void){
 	LPC_SC->PCLKSEL0 |= (3<<24); //CCLK/8
 	LPC_ADC->ADCR &=~(255 << 8); //[15:8] CLKDIV
 	//LPC_ADC->ADCR |= (1 << 16);
-	LPC_PINCON->PINMODE1 |= (1<<15); //neither pull-up nor pull-down.
-	LPC_PINCON->PINSEL1 |= (1<<14);
 	LPC_ADC->ADINTEN = 0xF;
 
 	//ADC_PowerdownCmd(LPC_ADC,1);
@@ -123,6 +121,7 @@ void ADC_IRQHandler(void){
 	uint16_t dato;
 	uint16_t monto;
 
+	//if ((LPC_ADC->ADDR0&(1<<31)>>31)==1)
 	if(ADC_ChannelGetStatus(LPC_ADC, 0, 1)) valADC1 = ((ADC_ChannelGetData(LPC_ADC, 0)&mascara)>>2);
 	else if(ADC_ChannelGetStatus(LPC_ADC, 1, 1)) valADC2 = ((ADC_ChannelGetData(LPC_ADC, 1)&mascara)>>2);
 	else if(ADC_ChannelGetStatus(LPC_ADC, 2, 1)) valADC3 = ((ADC_ChannelGetData(LPC_ADC, 2)&mascara)>>2);
