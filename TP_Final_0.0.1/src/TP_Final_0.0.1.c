@@ -12,8 +12,8 @@
 int main(void) {
 
 
-	//confADC();
-  	confSYSTICK(10);
+	confADC();
+  	//confSYSTICK(10);
 	confUART(); //TODO esta cambiar codigo de error
 	initTabla();
   	pruebaDemo();

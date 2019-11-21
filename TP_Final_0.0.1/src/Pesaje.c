@@ -6,10 +6,12 @@
  */
 #include <Multiplex.h>
 #include <Pesaje.h>
+#include <logica.h>
 #include "LPC17xx.h"
 #include "lpc17xx_pinsel.h"
 #include "lpc17xx_adc.h"
 #include "lpc17xx_timer.h"
+#include "lpc17xx_nvic.h"
 
 void confTIM(void);
 void confADCPin_0a3(uint8_t num);
@@ -21,7 +23,7 @@ void TIMER0_IRQHandler(void);
 
 uint16_t mascara = 0b0000111111111100;
 uint16_t resolucion = 5;
-uint16_t peso=5;
+uint16_t peso=0;
 static uint16_t tara = 0;
 
 /*Configuracion Timer0 para producir un Match cada 50 ms
@@ -40,11 +42,10 @@ void confTIM(void){
 	MATCHcfg.StopOnMatch = DISABLE;
 	MATCHcfg.ResetOnMatch = ENABLE;
 	MATCHcfg.ExtMatchOutputType = TIM_EXTMATCH_NOTHING;
-	MATCHcfg.MatchValue = 50000;
+	MATCHcfg.MatchValue = 200000;
 	TIM_ConfigMatch(LPC_TIM0, &MATCHcfg);
 
 	TIM_Cmd(LPC_TIM0, ENABLE);
-	NVIC_EnableIRQ(TIMER0_IRQn);
 	return;
 }
 
@@ -77,12 +78,26 @@ void confADC(void){
 	confADCPin_0a3(2);
 	confADCPin_0a3(3);
 	confTIM();
-	ADC_Init(LPC_ADC, 200000);
-	ADC_IntConfig(LPC_ADC, ADC_ADINTEN0, ENABLE);
-	ADC_IntConfig(LPC_ADC, ADC_ADINTEN1, ENABLE);
-	ADC_IntConfig(LPC_ADC, ADC_ADINTEN2, ENABLE);
-	ADC_IntConfig(LPC_ADC, ADC_ADINTEN3, ENABLE);
+	LPC_SC->PCONP |= (1 << 12);
+	LPC_ADC->ADCR |= (1 << 21);
+	//LPC_ADC->ADCR |= (2<<24); //inicia conversion por interrupcion de EINT0
+	LPC_SC->PCLKSEL0 |= (3<<24); //CCLK/8
+	LPC_ADC->ADCR &=~(255 << 8); //[15:8] CLKDIV
+	//LPC_ADC->ADCR |= (1 << 16);
+	LPC_PINCON->PINMODE1 |= (1<<15); //neither pull-up nor pull-down.
+	LPC_PINCON->PINSEL1 |= (1<<14);
+	LPC_ADC->ADINTEN = 0xF;
 
+	//ADC_PowerdownCmd(LPC_ADC,1);
+	/*ADC_Init(LPC_ADC, 200000);
+	ADC_IntConfig(LPC_ADC, ADC_ADINTEN0, SET);
+	ADC_IntConfig(LPC_ADC, ADC_ADINTEN1, SET);
+	ADC_IntConfig(LPC_ADC, ADC_ADINTEN2, SET);
+	ADC_IntConfig(LPC_ADC, ADC_ADINTEN3, SET);
+	ADC_IntConfig(LPC_ADC, ADC_ADGINTEN, RESET);
+
+	TIM_ClearIntPending(LPC_TIM0, TIM_MR0_INT);*/
+	NVIC_EnableIRQ(TIMER0_IRQn);
 	NVIC_EnableIRQ(ADC_IRQn);
 	return;
 }
@@ -100,13 +115,13 @@ void tarar(void){
  * Param:
  * 			NONE
  */
-void ADC_IRQHanler(void){
+void ADC_IRQHandler(void){
 	static uint16_t valADC1=0;
 	static uint16_t valADC2=0;
 	static uint16_t valADC3=0;
 	static uint16_t valADC4=0;
 	uint16_t dato;
-	//uint16_t monto;
+	uint16_t monto;
 
 	if(ADC_ChannelGetStatus(LPC_ADC, 0, 1)) valADC1 = (ADC_ChannelGetData(LPC_ADC, 0)&mascara)>>2;
 	else if(ADC_ChannelGetStatus(LPC_ADC, 1, 1)) valADC2 = (ADC_ChannelGetData(LPC_ADC, 1)&mascara)>>2;
@@ -117,11 +132,11 @@ void ADC_IRQHanler(void){
 	peso = dato*resolucion - (dato/25)*3 - tara;
 	convert(peso,PESO);
 
-	/*if(estaPesando()) {
-		monto=getPrecio()*peso;
+	if(estaPesando()) {
+		monto=(getPrecio()*peso)/1000;
 		convert(monto, MONTO);
 	}
-	*/
+
 	return;
 }
 
@@ -132,16 +147,23 @@ void ADC_IRQHanler(void){
 void TIMER0_IRQHandler(void){
 	static uint8_t channel = 0;
 
-	ADC_ChannelCmd(LPC_ADC, 0, DISABLE);
+	LPC_ADC->ADCR &=~0xF;
+	LPC_ADC->ADCR |=(1<<channel);
+	LPC_ADC->ADCR |=(1<<24);
+
+	/*/ADC_ChannelCmd(LPC_ADC, 0, DISABLE);
 	ADC_ChannelCmd(LPC_ADC, 1, DISABLE);
 	ADC_ChannelCmd(LPC_ADC, 2, DISABLE);
 	ADC_ChannelCmd(LPC_ADC, 3, DISABLE);
 
 	ADC_ChannelCmd(LPC_ADC, channel, ENABLE);
 
-	ADC_StartCmd(LPC_ADC, ADC_START_NOW);
+	ADC_StartCmd(LPC_ADC, ADC_START_NOW);*/
 
 	channel++;
+	if(channel==4){
+		channel=0;
+	}
 
 	TIM_ClearIntPending(LPC_TIM0, TIM_MR0_INT);
 	return;

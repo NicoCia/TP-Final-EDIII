@@ -9,6 +9,7 @@
 #include "LPC17xx.h"
 #include "lpc17xx_pinsel.h"
 #include "lpc17xx_uart.h"
+#include "lpc17xx_nvic.h"
 //#include "lpc17xx_gpio.h"
 
 void confUART(void);
@@ -80,13 +81,15 @@ void UART0_IRQHandler(void){
 void UART_IntTransmit(void){
 
 	uint32_t conta=0;
-	uint8_t mensaje[1]="";
+	uint8_t mensaje[3]="";
 	uint8_t stock[1500]="";
 	getStockEnAscii(stock);
 	//uint8_t error[]={"\r\nIngrese 's' para obtener el stock\n\r"};
-	uint8_t bandera=1;
+	uint8_t bandera=0;
 
-	UART_Receive(LPC_UART0, mensaje, sizeof(mensaje), BLOCKING);
+	UART_Receive(LPC_UART0, mensaje, 1, BLOCKING);
+	mensaje[1]='\n'; mensaje[2]='\r';
+	UART_Send(LPC_UART0, mensaje, sizeof(mensaje), NONE_BLOCKING);
 
 	switch(mensaje[0]){
 		case'0': bandera=0; accion(0); break;
@@ -103,8 +106,8 @@ void UART_IntTransmit(void){
 		case'B': bandera=0; accion(11); break;
 		case'C': bandera=0; accion(12); break;
 		case'D': bandera=0; accion(13); break;
-		case'*': bandera=0; accion(14); break;
-		case'#': bandera=0; accion(15); break;
+		case'#': bandera=0; accion(14); break;
+		case'*': bandera=0; accion(15); break;
 		case'S': bandera=1; break;
 		default: break;
 	}

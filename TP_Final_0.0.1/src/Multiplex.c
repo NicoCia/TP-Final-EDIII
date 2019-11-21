@@ -7,11 +7,11 @@
 //para catodo comun-revisar
 uint8_t prender[]={0b11111100, 0b01100000, 0b11011010, 0b11110010, 0b01100110, 0b10110110, 0b10111110, 0b11100000, 0b11111110, 0b11110110};
 uint8_t apagar[]={0b00000011, 0b10011111, 0b00100101, 0b00001101, 0b10011001, 0b01001001, 0b01000001, 0b00011111, 0b00000001, 0b00001001};
-uint8_t *nums[15]={};
-uint8_t prueba[19]={0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+uint8_t nums[15][2]={};
+uint8_t prueba[19]={"12345\t6789A\tBCDEF"};
 uint8_t displayOff=0b00000000;
 
-/*Convierte el dato recibido en un valor unitario para mostrar por GPIO en 7 segmentos
+/* Convierte el dato recibido en un valor unitario para mostrar por GPIO en 7 segmentos
  * Param:
  * 			uint16_t dato Valor a convertir
  */
@@ -48,7 +48,7 @@ void convert(uint16_t dato, Bloque i){
 	return;
 }
 
-/*Convierte el dato recibido en un valor unitario para mostrar por GPIO en 7 segmentos
+/* Convierte el dato recibido en un valor unitario para mostrar por GPIO en 7 segmentos
  * Param:
  * 			uint32_t disp	Display seleccionado
  * 			uint8_t  dig	Digito a mostrar
@@ -61,7 +61,7 @@ void display(uint32_t disp, uint8_t dig){
 	return;
 }
 
-/*Configura SYSTICK con clock interno e interrupciones
+/* Configura SYSTICK con clock interno e interrupciones
  * Param:
  * 			uint32_t time Intervalo de tiempo deseado
  */
@@ -71,7 +71,7 @@ void confSYSTICK(uint32_t time){
 	SYSTICK_Cmd(ENABLE);
 }
 
-/*Rutina de servicio de interrupcion de Systick
+/* Rutina de servicio de interrupcion de Systick
  * Param:
  * 			NONE
  */
@@ -91,6 +91,12 @@ void SysTick_Handler(void){
 }
 
 void sendPrueba(void){
-	prueba[19]='\n';
-	UART_Send(LPC_UART0, prueba, sizeof(prueba), BLOCKING);
+	/*prueba[17]='\n';
+	prueba[18]='\r';
+	UART_Send(LPC_UART0, prueba, sizeof(prueba), BLOCKING);*/
+	uint8_t aux[15]={};
+	for(uint8_t i=0; i<15; i++){
+		aux[i]=nums[i][0]+48;
+	}
+	UART_Send(LPC_UART0, aux, sizeof(aux), BLOCKING);
 }

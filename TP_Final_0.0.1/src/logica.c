@@ -248,6 +248,7 @@ void reiniciarCompra(){							//TODO puede haber un botón que haga esto.
 	cantCompras=0;
 	reempezarCompra();
 	modo=MODO_PESANDO;
+	convert(sumaParcial,MONTO);
 	return;
 }
 
