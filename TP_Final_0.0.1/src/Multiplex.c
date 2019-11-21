@@ -95,10 +95,12 @@ void sendPrueba(void){
 	/*prueba[17]='\n';
 	prueba[18]='\r';
 	UART_Send(LPC_UART0, prueba, sizeof(prueba), BLOCKING);*/
-	uint8_t aux[15]={};
+	uint8_t aux[17]={};
 	for(uint8_t i=0; i<15; i++){
 		aux[i]=nums[i][0]+48;
 	}
+	aux[15]='\n';
+	aux[16]='\r';
 	UART_Send(LPC_UART0, aux, sizeof(aux), BLOCKING);
 	return;
 }
