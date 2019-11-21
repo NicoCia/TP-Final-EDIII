@@ -21,7 +21,7 @@ void tarar(void);
 void ADC_IRQHanler(void);
 void TIMER0_IRQHandler(void);
 
-uint16_t mascara = 0b0000111111111100;
+uint16_t mascara = 0xFFA;
 uint16_t resolucion = 5;
 uint16_t peso=0;
 static uint16_t tara = 0;
@@ -123,10 +123,10 @@ void ADC_IRQHandler(void){
 	uint16_t dato;
 	uint16_t monto;
 
-	if(ADC_ChannelGetStatus(LPC_ADC, 0, 1)) valADC1 = (ADC_ChannelGetData(LPC_ADC, 0)&mascara)>>2;
-	else if(ADC_ChannelGetStatus(LPC_ADC, 1, 1)) valADC2 = (ADC_ChannelGetData(LPC_ADC, 1)&mascara)>>2;
-	else if(ADC_ChannelGetStatus(LPC_ADC, 2, 1)) valADC3 = (ADC_ChannelGetData(LPC_ADC, 2)&mascara)>>2;
-	else if(ADC_ChannelGetStatus(LPC_ADC, 3, 1)) valADC4 = (ADC_ChannelGetData(LPC_ADC, 3)&mascara)>>2;
+	if(ADC_ChannelGetStatus(LPC_ADC, 0, 1)) valADC1 = ((ADC_ChannelGetData(LPC_ADC, 0)&mascara)>>2);
+	else if(ADC_ChannelGetStatus(LPC_ADC, 1, 1)) valADC2 = ((ADC_ChannelGetData(LPC_ADC, 1)&mascara)>>2);
+	else if(ADC_ChannelGetStatus(LPC_ADC, 2, 1)) valADC3 = ((ADC_ChannelGetData(LPC_ADC, 2)&mascara)>>2);
+	else if(ADC_ChannelGetStatus(LPC_ADC, 3, 1)) valADC4 = ((ADC_ChannelGetData(LPC_ADC, 3)&mascara)>>2);
 
 	dato = (valADC1+valADC2+valADC3+valADC4);
 	peso = dato*resolucion - (dato/25)*3 - tara;

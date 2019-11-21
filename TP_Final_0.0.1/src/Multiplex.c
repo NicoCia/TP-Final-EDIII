@@ -69,6 +69,7 @@ void confSYSTICK(uint32_t time){
 	SYSTICK_InternalInit(time);
 	SYSTICK_IntCmd(ENABLE);
 	SYSTICK_Cmd(ENABLE);
+	return;
 }
 
 /* Rutina de servicio de interrupcion de Systick
@@ -99,4 +100,5 @@ void sendPrueba(void){
 		aux[i]=nums[i][0]+48;
 	}
 	UART_Send(LPC_UART0, aux, sizeof(aux), BLOCKING);
+	return;
 }
