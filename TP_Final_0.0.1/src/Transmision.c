@@ -5,6 +5,7 @@
  *      Author: nicoc
  */
 #include <Transmision.h>
+#include <Multiplex.h>
 #include <logica.h>
 #include "LPC17xx.h"
 #include "lpc17xx_pinsel.h"

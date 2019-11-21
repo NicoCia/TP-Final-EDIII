@@ -61,7 +61,7 @@ void confADCPin_0a3(uint8_t num){
 		PinCfg.Pinnum=23+num;							//Pin 23 si AD0, 24 si AD1,...
 		PinCfg.Funcnum=1;								//Funcion de ADC
 		PinCfg.OpenDrain=PINSEL_PINMODE_NORMAL;			//No open drain
-		PinCfg.Pinmode=PINSEL_PINMODE_PULLUP;			//Resistencia de Pull-up
+		PinCfg.Pinmode=PINSEL_PINMODE_TRISTATE;			//Sin Resistencia de Pull-up ni Pull-Down
 
 		PINSEL_ConfigPin(&PinCfg);						//Configura el pin
 	}
