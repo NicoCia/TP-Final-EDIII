@@ -68,7 +68,7 @@ void confADCPin_0a3(uint8_t num){
 	return;
 }
 
-/*Configuracion ADC para tomar muestras cada vez que se producza un Match en Timer0
+/*Configuracion ADC para tomar muestras por 4 canales
  * Param:
  * 			NONE
  */
@@ -150,7 +150,7 @@ void TIMER0_IRQHandler(void){
 	LPC_ADC->ADCR |=(1<<channel);
 	LPC_ADC->ADCR |=(1<<24);
 
-	/*/ADC_ChannelCmd(LPC_ADC, 0, DISABLE);
+	/*ADC_ChannelCmd(LPC_ADC, 0, DISABLE);
 	ADC_ChannelCmd(LPC_ADC, 1, DISABLE);
 	ADC_ChannelCmd(LPC_ADC, 2, DISABLE);
 	ADC_ChannelCmd(LPC_ADC, 3, DISABLE);
@@ -160,7 +160,7 @@ void TIMER0_IRQHandler(void){
 	ADC_StartCmd(LPC_ADC, ADC_START_NOW);*/
 
 	channel++;
-	if(channel==4){
+	if(channel>3){
 		channel=0;
 	}
 
