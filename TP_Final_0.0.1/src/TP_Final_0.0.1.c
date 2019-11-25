@@ -11,12 +11,12 @@
 int main(void) {
 
 
-	confADC();
-	confGPIO();
-	confUART(); 
-	initTabla();
-  	pruebaDemo();
-  	confSYSTICK(2);
+	confADC();		//Configura el ADC
+	confGPIO();		//Configura GPIO
+	confUART(); 		//Configura el UART
+	initTabla();		//Inicializa la tabla de logica
+  	pruebaDemo();		//Carga datos en la tabla de logica
+  	confSYSTICK(2);		//Configura el SysTick
 
   	while(1) {}
 
