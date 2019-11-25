@@ -1,25 +1,28 @@
 #include <Multiplex.h>
+#include <logica.h>
 #include "LPC17xx.h"
 #include "lpc17xx_systick.h"
 #include "lpc17xx_gpio.h"
 #include "lpc17xx_uart.h"
 
 //para anodo comun-revisar
-uint8_t prender[]={0b11111100, 0b01100000, 0b11011010, 0b11110010, 0b01100110, 0b10110110, 0b10111110, 0b11100000, 0b11111110, 0b11110110};
-uint8_t apagar[]={0b00000011, 0b10011111, 0b00100101, 0b00001101, 0b10011001, 0b01001001, 0b01000001, 0b00011111, 0b00000001, 0b00001001};
-//uint8_t nums[15][2]={};
-uint8_t nums[15]={"012345678901234"};
+uint8_t apagar[]={ 0b00111111, 0b00000110, 0b01011011, 0b01001111, 0b01100110, 0b01101101, 0b10111110, 0b00000111, 0b01111111, 0b01101111};
+uint8_t prender[]={0b11000000, 0b11111001, 0b10100100, 0b10110000, 0b10011001, 0b10010010, 0b01000001, 0b11111000, 0b10000000, 0b10010000};
+uint8_t nums[15][2]={};
+uint8_t nums1[5]={9,8,7,2,5};
+//uint8_t nums[15]={"012345678901234"};
 uint8_t prueba[19]={"12345\t6789A\tBCDEF"};
 uint8_t displayOff=0b00000000;
+uint8_t primero=0;
+uint8_t ultimo=4;
 
 /* Convierte el dato recibido en un valor unitario para mostrar por GPIO en 7 segmentos
  * Param:
  * 			uint16_t dato Valor a convertir
  */
 void convert(uint16_t dato, Bloque i){
-	/*uint16_t resto=dato;
+	uint16_t resto=dato;
 	uint8_t dig;
-
 	switch(i){
 		case PRECIO: dig=0; break;
 		case PESO: dig=5; break;
@@ -27,25 +30,19 @@ void convert(uint16_t dato, Bloque i){
 		case TECLADO: dig=10; break;
 		default: break;
 	}
-
 	uint8_t parcial;
 	uint16_t div=10000;
-
 	while(div!=0){
 		parcial=resto/div;
 		resto=resto%div;
 		nums[dig][0]=parcial;
 		prueba[dig]=parcial;
-		*TODO
-		 * implementar que al estar en bloque TECLADO, los displays que no se utilizan en el codigo se apaguen
-		 */
-		 /*if(i==TECLADO)
-		else *//*if(dig==2||dig==6||dig==12)nums[dig][1]=SI;
+		if(dig==2||dig==6||dig==12)nums[dig][1]=SI;
 		else nums[dig][1]=NO;
 		dig++;
 		div=div/10;
 	}
-	//prueba[dig+1]='\t';*/
+	//prueba[dig+1]='\t';
 	return;
 }
 
@@ -55,15 +52,15 @@ void convert(uint16_t dato, Bloque i){
  * 			uint8_t  dig	Digito a mostrar
  */
 void display(uint32_t disp, uint8_t dig){
-	uint8_t puerto;
-	if(dig<12) puerto=0;
-	else puerto=2;
-	GPIO_SetValue(puerto,~disp);
-	GPIO_ClearValue(puerto,disp);
-	GPIO_ClearValue(0,(uint32_t)(apagar[nums[dig]]<<4));
-	GPIO_SetValue(0,(uint32_t)(prender[nums[dig]]<<4));
-	/*GPIO_ClearValue(0,(uint32_t)((apagar[nums[dig][0]]+(~nums[dig][1]))<<4));
-	GPIO_SetValue(0,(uint32_t)((prender[nums[dig][0]]+nums[dig][1])<<4));*/
+	uint8_t puerto=0;
+	uint32_t aA=0;
+	uint32_t aP=0;
+	/*if(dig<12) puerto=0;
+	else puerto=2;*/
+	GPIO_SetValue(puerto,disp);
+	GPIO_ClearValue(puerto,~disp);
+	GPIO_ClearValue(0,(uint32_t)(apagar[nums1[dig]]<<4));
+	GPIO_SetValue(0,(uint32_t)(prender[nums1[dig]]<<4));
 	return;
 }
 
@@ -75,6 +72,7 @@ void confSYSTICK(uint32_t time){
 	SYSTICK_InternalInit(time);
 	SYSTICK_IntCmd(ENABLE);
 	SYSTICK_Cmd(ENABLE);
+	NVIC_SetPriority(SysTick_IRQn,20);
 	return;
 }
 
@@ -84,49 +82,53 @@ void confSYSTICK(uint32_t time){
  */
 void SysTick_Handler(void){
 	static uint8_t dig = 0;
-	static uint32_t disp;
+	static uint32_t disp = 0;
+	static uint8_t conta=0;
 
-	switch(dig){
+	if(dig<primero||dig>ultimo) dig=primero;
+
+	switch(conta){
 		case 0: disp=(1<<0); break;
 		case 1: disp=(1<<1); break;
 		case 2: disp=(1<<15); break;
 		case 3: disp=(1<<16); break;
 		case 4: disp=(1<<17); break;
-		case 5: disp=(1<<18); break;
-		case 6: disp=(1<<21); break;
-		case 7: disp=(1<<22); break;
-		case 8: disp=(1<<27); break;
-		case 9: disp=(1<<28); break;
-		case 10: disp=(1<<30); break;
-		case 11: disp=(1<<31); break;
-		case 12: disp=(1<<10); break;
-		case 13: disp=(1<<11); break;
-		case 14: disp=(1<<12); break;
 		default: break;
 	}
-
+	conta++;
+	if(conta>4) conta=0;
 	display(disp, dig);
 
-	//disp=(disp<<1);
 	dig++;
 
 	if(dig>14)dig=0;
-	//if(disp>(1<<26)) disp=(1<<12);
-
 	return;
 }
 
 void sendPrueba(void){
-	/*prueba[17]='\n';
-	prueba[18]='\r';
-	UART_Send(LPC_UART0, prueba, sizeof(prueba), BLOCKING);*/
-	uint8_t aux[17]={};
-	for(uint8_t i=0; i<15; i++){
-		aux[i]=nums[i]+48;
-		//aux[i]=nums[i][0]+48;
+	uint8_t mensaje[]="Precio\tPeso\tMonto\n\r";
+	uint8_t mensaje1[]="Codigo\tPrecio\tCantidad\n\r";
+	if(!estaModificando())UART_Send(LPC_UART0, mensaje, sizeof(mensaje), BLOCKING);
+	else UART_Send(LPC_UART0, mensaje1, sizeof(mensaje1), BLOCKING);
+	//uint8_t mensaje1[]=""
+	uint8_t aux[19]={};
+	uint8_t conta=0;
+	for(uint8_t i=0; i<17; i++){
+		if(i==5||i==11) aux[i]='\t';
+		else {
+			aux[i]=nums[conta][0]+48;
+			conta++;
+		}
 	}
-	aux[15]='\n';
-	aux[16]='\r';
+	aux[17]='\n';
+	aux[18]='\r';
 	UART_Send(LPC_UART0, aux, sizeof(aux), BLOCKING);
+	return;
+}
+
+void setPrimero(uint8_t prim){
+	primero=prim;
+	ultimo=prim+4;
+
 	return;
 }
