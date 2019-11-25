@@ -55,8 +55,7 @@ void confUART(void){
 	//Habilita interrucpción Rx
 
 	UART_IntConfig(LPC_UART0, UART_INTCFG_RBR, ENABLE);
-	/* preemption = 1, sub-priority = 1 */
-	//NVIC_SetPriority(UART0_IRQn, ((0x01<<3)|0x01));
+
 	confUARTPin();
 	//Habilita interrpción por UART0
 	NVIC_EnableIRQ(UART0_IRQn);
@@ -72,7 +71,7 @@ void UART0_IRQHandler(void){
 	//Determina la fuente de interrupción
 	intsrc = UART_GetIntId(LPC_UART0);
 	tmp = intsrc & UART_IIR_INTID_MASK;
-	// Evalúa si Transmit Holding está vacío
+	// Evalúa si Interrupt identification == Receive data available
 	if (tmp == UART_IIR_INTID_RDA){
 		UART_IntTransmit();
 	}

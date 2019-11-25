@@ -87,5 +87,11 @@ void confPinSoC(uint8_t puerto,uint8_t primerBit, uint8_t ultimoBit,uint8_t valo
  */
 void confGPIO(void){
 	confPinSal(0,4,11);
+	confPinSal(0,0,1);
+	confPinSal(0,15,18);
+	confPinSal(0,21,22);
+	confPinSal(0,27,28);
+	confPinSal(0,30,31);
+	confPinSal(2,10,12);
 	return;
 }

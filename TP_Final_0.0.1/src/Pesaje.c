@@ -68,7 +68,7 @@ void confADCPin_0a3(uint8_t num){
 	return;
 }
 
-/*Configuracion ADC para tomar muestras por 4 canales
+/*Configuracion ADC para tomar muestras por 4 canales, con interrupciones habilitadas
  * Param:
  * 			NONE
  */
@@ -80,21 +80,10 @@ void confADC(void){
 	confTIM();
 	LPC_SC->PCONP |= (1 << 12);
 	LPC_ADC->ADCR |= (1 << 21);
-	//LPC_ADC->ADCR |= (2<<24); //inicia conversion por interrupcion de EINT0
 	LPC_SC->PCLKSEL0 |= (3<<24); //CCLK/8
 	LPC_ADC->ADCR &=~(255 << 8); //[15:8] CLKDIV
-	//LPC_ADC->ADCR |= (1 << 16);
 	LPC_ADC->ADINTEN = 0xF;
 
-	//ADC_PowerdownCmd(LPC_ADC,1);
-	/*ADC_Init(LPC_ADC, 200000);
-	ADC_IntConfig(LPC_ADC, ADC_ADINTEN0, SET);
-	ADC_IntConfig(LPC_ADC, ADC_ADINTEN1, SET);
-	ADC_IntConfig(LPC_ADC, ADC_ADINTEN2, SET);
-	ADC_IntConfig(LPC_ADC, ADC_ADINTEN3, SET);
-	ADC_IntConfig(LPC_ADC, ADC_ADGINTEN, RESET);
-
-	TIM_ClearIntPending(LPC_TIM0, TIM_MR0_INT);*/
 	NVIC_EnableIRQ(TIMER0_IRQn);
 	NVIC_EnableIRQ(ADC_IRQn);
 	return;
@@ -121,16 +110,20 @@ void ADC_IRQHandler(void){
 	uint16_t dato;
 	uint16_t monto;
 
-	//if ((LPC_ADC->ADDR0&(1<<31)>>31)==1)
+	//Se revisa que canal interrumpio, i se guarda el resultado obtenido
 	if(ADC_ChannelGetStatus(LPC_ADC, 0, 1)) valADC1 = ((ADC_ChannelGetData(LPC_ADC, 0)&mascara)>>2);
 	else if(ADC_ChannelGetStatus(LPC_ADC, 1, 1)) valADC2 = ((ADC_ChannelGetData(LPC_ADC, 1)&mascara)>>2);
 	else if(ADC_ChannelGetStatus(LPC_ADC, 2, 1)) valADC3 = ((ADC_ChannelGetData(LPC_ADC, 2)&mascara)>>2);
 	else if(ADC_ChannelGetStatus(LPC_ADC, 3, 1)) valADC4 = ((ADC_ChannelGetData(LPC_ADC, 3)&mascara)>>2);
 
+	//Suma de los valores obtenidos por cada canal
 	dato = (valADC1+valADC2+valADC3+valADC4);
 	peso = dato*resolucion - (dato/25)*3 - tara;
+
+	//Se convierte a 7 segmentos
 	convert(peso,PESO);
 
+	//Si estoy en modo pesando, se calcula el monto y se convierte a 7 segmentos
 	if(estaPesando()) {
 		monto=(getPrecio()*peso)/1000;
 		convert(monto, MONTO);
@@ -146,18 +139,10 @@ void ADC_IRQHandler(void){
 void TIMER0_IRQHandler(void){
 	static uint8_t channel = 0;
 
+	//Habilito el canal correspondiente del ADC e inicio la conversion
 	LPC_ADC->ADCR &=~0xF;
 	LPC_ADC->ADCR |=(1<<channel);
 	LPC_ADC->ADCR |=(1<<24);
-
-	/*ADC_ChannelCmd(LPC_ADC, 0, DISABLE);
-	ADC_ChannelCmd(LPC_ADC, 1, DISABLE);
-	ADC_ChannelCmd(LPC_ADC, 2, DISABLE);
-	ADC_ChannelCmd(LPC_ADC, 3, DISABLE);
-
-	ADC_ChannelCmd(LPC_ADC, channel, ENABLE);
-
-	ADC_StartCmd(LPC_ADC, ADC_START_NOW);*/
 
 	channel++;
 	if(channel>3){
