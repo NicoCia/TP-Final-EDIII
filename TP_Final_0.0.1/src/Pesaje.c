@@ -21,7 +21,7 @@ void tarar(void);
 void ADC_IRQHanler(void);
 void TIMER0_IRQHandler(void);
 
-uint16_t mascara = 0xFFA;
+uint16_t mascara = 0b0000111111111100;
 uint16_t resolucion = 5;
 uint16_t peso=0;
 static uint16_t tara = 0;
@@ -68,7 +68,7 @@ void confADCPin_0a3(uint8_t num){
 	return;
 }
 
-/*Configuracion ADC para tomar muestras por 4 canales, con interrupciones habilitadas
+/*Configuracion ADC para tomar muestras cada vez que se producza un Match en Timer0
  * Param:
  * 			NONE
  */
@@ -80,8 +80,10 @@ void confADC(void){
 	confTIM();
 	LPC_SC->PCONP |= (1 << 12);
 	LPC_ADC->ADCR |= (1 << 21);
+
 	LPC_SC->PCLKSEL0 |= (3<<24); //CCLK/8
 	LPC_ADC->ADCR &=~(255 << 8); //[15:8] CLKDIV
+
 	LPC_ADC->ADINTEN = 0xF;
 
 	NVIC_EnableIRQ(TIMER0_IRQn);
@@ -103,27 +105,14 @@ void tarar(void){
  * 			NONE
  */
 void ADC_IRQHandler(void){
-	static uint16_t valADC1=0;
-	static uint16_t valADC2=0;
-	static uint16_t valADC3=0;
-	static uint16_t valADC4=0;
-	uint16_t dato;
-	uint16_t monto;
+	static uint16_t dato=0;
+	static uint16_t monto=0;
 
-	//Se revisa que canal interrumpio, i se guarda el resultado obtenido
-	if(ADC_ChannelGetStatus(LPC_ADC, 0, 1)) valADC1 = ((ADC_ChannelGetData(LPC_ADC, 0)&mascara)>>2);
-	else if(ADC_ChannelGetStatus(LPC_ADC, 1, 1)) valADC2 = ((ADC_ChannelGetData(LPC_ADC, 1)&mascara)>>2);
-	else if(ADC_ChannelGetStatus(LPC_ADC, 2, 1)) valADC3 = ((ADC_ChannelGetData(LPC_ADC, 2)&mascara)>>2);
-	else if(ADC_ChannelGetStatus(LPC_ADC, 3, 1)) valADC4 = ((ADC_ChannelGetData(LPC_ADC, 3)&mascara)>>2);
+	if(ADC_ChannelGetStatus(LPC_ADC, 0, 1)) {dato = ((LPC_ADC->ADDR0&(0xFFF0)>>4)&mascara)>>2;}
 
-	//Suma de los valores obtenidos por cada canal
-	dato = (valADC1+valADC2+valADC3+valADC4);
-	peso = dato*resolucion - (dato/25)*3 - tara;
+	peso = dato*resolucion - tara;
+	if(!estaModificando())convert(peso,PESO);
 
-	//Se convierte a 7 segmentos
-	convert(peso,PESO);
-
-	//Si estoy en modo pesando, se calcula el monto y se convierte a 7 segmentos
 	if(estaPesando()) {
 		monto=(getPrecio()*peso)/1000;
 		convert(monto, MONTO);
@@ -139,15 +128,9 @@ void ADC_IRQHandler(void){
 void TIMER0_IRQHandler(void){
 	static uint8_t channel = 0;
 
-	//Habilito el canal correspondiente del ADC e inicio la conversion
 	LPC_ADC->ADCR &=~0xF;
 	LPC_ADC->ADCR |=(1<<channel);
 	LPC_ADC->ADCR |=(1<<24);
-
-	channel++;
-	if(channel>3){
-		channel=0;
-	}
 
 	TIM_ClearIntPending(LPC_TIM0, TIM_MR0_INT);
 	return;
