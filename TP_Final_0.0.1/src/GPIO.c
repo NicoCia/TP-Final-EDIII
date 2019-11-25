@@ -16,28 +16,6 @@ void confPinSoC(uint8_t puerto,uint8_t primerBit, uint8_t ultimoBit,uint8_t valo
 
 #define SALIDA (uint8_t) 1
 
-/*
- * Configura el Pin de la interrupcion externa
- * Param:
- * 			uint8_t num Debe ser un número entero entre 0 y 3
- *
-void confEINTPin(uint8_t num){
-	if(num<4){
-		PINSEL_CFG_Type PinCfg;
-		PinCfg.Portnum=2;								//Puerto 2
-		PinCfg.Pinnum=10+num;							//Pin 10 si EINT0, 11 si EINT1, ...
-		PinCfg.Funcnum=1;								//Funcion de EINT
-		PinCfg.OpenDrain=PINSEL_PINMODE_NORMAL;			//No open-drain
-		PinCfg.Pinmode=PINSEL_PINMODE_TRISTATE;			//Sin resistencias de pull-up ni pull-down
-
-		PINSEL_ConfigPin(&PinCfg);						//Configura el pin
-	}
-	return;
-}
-*/
-
-
-
 /*Configura como salidas pines contiguos pasados por parámteros
  * Param:
  * 			uint8_t puerto 	   Puerto a configurar. Debe ser un valor entre 0 y 3
